@@ -1,0 +1,6 @@
+[submodule "44week/44week/html-demo-page"]
+	path = 44week/44week/html-demo-page
+	url = git@github.com:Lexicon-Smaland/html-demo-page.git
+[submodule "44week/html-demo-page"]
+	path = 44week/html-demo-page
+	url = git@github.com:Lexicon-Smaland/html-demo-page.git
