@@ -28,3 +28,14 @@ I was 12. – Elon Musk
 6. Software and cathedrals are much the same — first we build them, then we pray.
 7. Web development is difficult, only then it is fun to do. You just have to set your standards. If it were to be easy, would anyone do it? ― Olawale
 Daniel
+
+### Programmers Quotes
+
+1. Programmers seem to be changing the world. It would be a relief, for them and for all of us, if they knew something about it. – Ellen Ullman
+2. Most good programmers do programming not because they expect to get paid or get adulation by the public, but because it is fun to program. –
+Linus Torvalds
+3. Programmer: A machine that turns coffee into code. – Anonymous
+4. When I wrote this code, only God and I understood what I did. Now only God knows. – Anonymous
+5. I’m not a great programmer; I’m just a good programmer with great habits. ― Kent Beck
+6. You might not think that programmers are artists, but programming is an extremely creative profession. It’s logic-based creativity. – John Romero
+7. Programming is learned by writing programs. ― Brian Kernighan
