@@ -39,3 +39,14 @@ Linus Torvalds
 5. I’m not a great programmer; I’m just a good programmer with great habits. ― Kent Beck
 6. You might not think that programmers are artists, but programming is an extremely creative profession. It’s logic-based creativity. – John Romero
 7. Programming is learned by writing programs. ― Brian Kernighan
+
+### Funny Quotes for Developers
+
+1. Software comes from heaven when you have good hardware. – Ken Olsen
+2. There is always one more bug to fix. – Ellen Ullman
+3. If debugging is the process of removing bugs, then programming must be the process of putting them in. – Sam Redwine
+4. Talk is cheap. Show me the code. ― Linus Torvalds
+5. Sometimes it pays to stay in bed on Monday, rather than spending the rest of the week debugging Monday’s code. – Dan Salomon 6. If, at first, you do not succeed, call it version 1.0. ― Khayri R.R. Woulfe
+7. Computers are fast; developers keep them slow. – Anonymous
+
+
