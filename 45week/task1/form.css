@@ -1,0 +1,121 @@
+:root{
+    --HEADER_FOOTER_BG_COLOR:rgb(46, 46, 46);
+    --HEADER_FOOTER_FONT_COLOR:white;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+}
+
+header {
+    background-color: var(--HEADER_FOOTER_BG_COLOR);
+    border-bottom: 5px solid red;
+    height: 80px;
+    display: flex;
+}
+nav {
+    display: flex;
+    gap: 10px;
+}
+header nav a {
+    text-decoration: none;
+    font-size: 1.5em;
+    /*background-color: red;*/
+    padding: 1em;
+    color: white;
+}
+header nav a:hover {
+    background-color: rgb(240, 248, 255);
+    color: black;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    background-color: #cccccc;
+    width: 50%;
+    padding: 1em;
+    margin: auto;
+}
+
+.container form{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: .5em;
+    /*background-color: blue;*/
+}
+.container form input,select,textarea{
+    padding: 1em;
+    border-radius: 1em;
+    border: 1px solid rgba(126, 113, 184, 0.727);
+    box-shadow: inset 0px 0px 7px  rgba(0, 0, 0, 0.33);
+}
+.container form button[type="submit"] {
+    background-color: rgb(92, 222, 191);
+    /*background-color: white;*/
+    /*color: white;*/
+    border: none;
+    border-radius: .5em;
+    padding: .5em;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+.container form .register-btn:hover{
+    background-color: #2EE59D;
+    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+}
+.container table {
+    background-color: aliceblue;
+    width: 100%;
+    border-collapse: collapse;
+}
+.container table th{
+    color: white;
+}
+.container table th,td{
+    /*display: table-row;*/
+    border: 1px solid rgb(189, 188, 188);
+    text-align: center;
+    padding: .5em;
+}
+.container table th{
+    background-color: rgb(128, 128, 128);
+}
+.container table th:nth-child(even){
+    background-color: rgb(174, 176, 179);
+}
+.container table td:last-child{
+    display: flex;
+    justify-content: center;
+    gap: .4em;
+}
+.container table td:last-child button {
+    border-radius: .2em;
+    border: none;
+    padding: .5em;
+    cursor: pointer;
+    transition: .1s ease-in-out;
+    border: 1px solid #ccc;
+}
+.container table td:last-child button:hover{
+   background-color: #4d4e53;
+    color: white;
+}
+.container table tr:hover{
+    background-color: rgb(228, 255, 228);
+}
+
+footer{
+    height: 80px;
+    background-color: var(--HEADER_FOOTER_BG_COLOR);
+    color: var(--HEADER_FOOTER_FONT_COLOR);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+}
