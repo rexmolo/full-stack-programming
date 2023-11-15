@@ -65,7 +65,7 @@ public class Main {
 
     public static void doCalculate(double a, String symbol, double b) {
 
-        sysMsg(a + " " + symbol + " " + b, false);
+//        sysMsg(a + " " + symbol + " " + b, false);
 
 
 
