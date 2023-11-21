@@ -23,15 +23,15 @@ public class TimeTool {
                 System.out.println(getCurrentDaySpecialFormat());
                 break;
             case 3:
-                System.out.println(getCurrentDaySpecialFormat());
+                printLastMondayAndLoopEntireWeek();
                 break;
             default:
-                System.out.println(getCurrentDaySpecialFormat());
+                System.out.println("invalid signal");
         }
     }
 
     /**
-     *
+     *Create a LocalDate of the current day and print it out
      * @return example: 2023-11-20
      */
     public static LocalDate getCurrentDay() {
@@ -39,11 +39,21 @@ public class TimeTool {
     }
 
 
+    /**
+     * Create a LocalDate of the current day and print it out in the following pattern using DateTimeFormatter: Torsdag 29 mars.
+     * @return
+     */
     public static String getCurrentDaySpecialFormat(){
         LocalDateTime ldt = LocalDateTime.now();
-        return ldt.format(DateTimeFormatter.ofLocalizedPattern("E d M"));
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE d MMMM");
+        String text = ldt.format(formatter);
+
+        return text;
     }
 
+    /**
+     * Create a LocalDate of last Monday. Then print out the entire week in a loop using standard ISO format.
+     */
     public static void printLastMondayAndLoopEntireWeek() {
         LocalDate ld = LocalDate.now();
         LocalDate lastMonday = ld.minusWeeks(1).with(TemporalAdjusters.previous(DayOfWeek.MONDAY));
