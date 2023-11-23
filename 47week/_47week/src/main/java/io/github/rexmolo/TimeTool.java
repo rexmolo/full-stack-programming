@@ -7,6 +7,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.TextStyle;
 import java.time.temporal.TemporalAdjusters;
+import java.util.HashMap;
 import java.util.Locale;
 
 import static java.time.temporal.ChronoField.DAY_OF_WEEK;
@@ -67,6 +68,16 @@ public class TimeTool {
             System.out.printf("%s is: %s%n", dayOfWeek, nextDay.format(DateTimeFormatter.ISO_LOCAL_DATE));
         }
 
+    }
+
+    /**
+     *Create a LocalDate object from a String by using the .parse() method.
+     *
+     */
+    public static LocalDate getTimeOfStringFormat() {
+        LocalDate ld = LocalDate.parse("2023.11.23");
+
+        return ld;
     }
 
 }
