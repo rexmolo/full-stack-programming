@@ -7,7 +7,7 @@ public class Main {
 
 
         String[] names = {"Fredrik"};
-        String[] moreNames = {"Erik", "Ulf", "Simon", "Kent"};
+        String[] moreNames = {"Fredrik", "Erik", "Ulf", "Simon", "Kent"};
 
         String[] newArr = Arr.merge(names, moreNames);
         System.out.println(Arrays.toString(newArr));
