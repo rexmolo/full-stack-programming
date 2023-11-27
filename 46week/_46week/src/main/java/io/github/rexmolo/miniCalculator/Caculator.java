@@ -44,7 +44,7 @@ public class Caculator {
         if (isQuit(userInput)) {
            sysMsg("Thanks Bye Bye~", true);
         }
-        
+
         if (!userInput.equals("q") && Arrays.binarySearch(operations, Integer.parseInt(userInput)) < 0){
             promptMessage(ANSI_RED + "please input valid operator" + ANSI_RESET);
             return -1;
