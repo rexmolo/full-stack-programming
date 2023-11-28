@@ -48,4 +48,14 @@ class ArrTest {
         assertEquals(Arrays.toString(numberArr), Arrays.toString(exceptedArr));
     }
 
+    @Test
+    void sort() {
+        String[] sortArr = {"Paris", "London", "New York", "Stockholm"};
+        String[] excepted = {"London", "New York","Paris","Stockholm"};
+
+        String[] actual = Arr.sort(sortArr);
+
+        assertEquals(Arrays.toString(excepted), Arrays.toString(actual));
+    }
+
 }
