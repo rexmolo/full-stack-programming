@@ -24,7 +24,7 @@ public class Arr {
     /**
      * Write a program which will store elements in an array of type ‘int’ and print it out.
      * Expected output: 11 23 39 etc.
-     * 
+     *
      * @param arr
      * @param nums
      * @return
@@ -73,5 +73,14 @@ public class Arr {
 
        return arr;
     }
+
+    public static int[] copyOf(int[] arr) {
+        int[] newArr = new int[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            newArr[i] = arr[i];
+        }
+        return newArr;
+    }
+
 
 }

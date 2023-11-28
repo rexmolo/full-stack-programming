@@ -1,6 +1,8 @@
 package io.github.rexmolo;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.Arrays;
 
@@ -37,5 +39,13 @@ class ArrTest {
         assertEquals(expectedIndex, index);
     }
 
+    @Test
+    void copyOf(){
+        int[] numberArr = {5,6};
+        int[] exceptedArr = {5,6};
+
+        int[] actual = Arr.copyOf(numberArr);
+        assertEquals(Arrays.toString(numberArr), Arrays.toString(exceptedArr));
+    }
 
 }
