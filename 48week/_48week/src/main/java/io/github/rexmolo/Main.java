@@ -17,9 +17,15 @@ public class Main {
 
 //        Utils.specialPrintNumbers(newArr);
 
-        int index = Arr.indexOf(moreNames, "ulf");
+//
+
+
 
     }
 
+    private static void task3() {
+        String[] sortArr = {"Paris", "London", "New York", "Stockholm"};
+        System.out.println(Arrays.toString(Arr.sort(sortArr)));
+    }
 
 }

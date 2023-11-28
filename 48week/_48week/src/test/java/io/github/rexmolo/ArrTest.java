@@ -24,4 +24,18 @@ class ArrTest {
         assertArrayEquals(expected, actual);
 
     }
+
+    @Test
+    void indexOf() {
+        //Arrange
+        String[] moreNames = {"Fredrik", "Erik", "Ulf", "Simon", "Kent"};
+        int expectedIndex = 2;
+
+        //Act
+        int index = Arr.indexOf(moreNames, "ulf");
+
+        assertEquals(expectedIndex, index);
+    }
+
+
 }

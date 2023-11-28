@@ -1,5 +1,6 @@
 package io.github.rexmolo;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 
 public class Arr {
@@ -31,6 +32,22 @@ public class Arr {
                 return i;
         }
         return -1;
+    }
+
+    public static String[] sort(String[] arr) {
+       for (int i = 0; i < arr.length; i++) {
+           for (int j = i+1; j < arr.length; j++) {
+
+               if (arr[i].compareToIgnoreCase(arr[j]) > 0){
+                   String temp = arr[i];
+                   arr[i] = arr[j];
+                   arr[j] = temp;
+               }
+
+           }
+       }
+
+       return arr;
     }
 
 }
