@@ -24,5 +24,13 @@ public class Arr {
         // if (num == null) return //how to check num in java and if num not exist what should I return.
         return merge(arr, nums);
     }
-    
+
+    public static int indexOf(String[] hystack, String needle) {
+        for (int i = 0; i < hystack.length; i++) {
+            if (hystack[i].equalsIgnoreCase(needle))
+                return i;
+        }
+        return -1;
+    }
+
 }
