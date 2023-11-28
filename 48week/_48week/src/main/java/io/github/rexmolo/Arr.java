@@ -21,11 +21,27 @@ public class Arr {
         return newArr;
     }
 
+    /**
+     * Write a program which will store elements in an array of type ‘int’ and print it out.
+     * Expected output: 11 23 39 etc.
+     * 
+     * @param arr
+     * @param nums
+     * @return
+     */
     public static int[] append(int[] arr, int... nums) {
         // if (num == null) return //how to check num in java and if num not exist what should I return.
         return merge(arr, nums);
     }
 
+    /**
+     * Create a program and create a method with name ‘indexOf’ which will find and return the index of an element in the array. If the element doesn’t exist your method should return -1 as value.
+     * Expected output: Index position of number 5 is: 2.
+     *
+     * @param hystack
+     * @param needle
+     * @return
+     */
     public static int indexOf(String[] hystack, String needle) {
         for (int i = 0; i < hystack.length; i++) {
             if (hystack[i].equalsIgnoreCase(needle))
@@ -34,6 +50,14 @@ public class Arr {
         return -1;
     }
 
+    /**
+     * Write a program which will sort string array.
+     * Expected output: String array: [Paris, London, New York, Stockholm]
+     * Sort string array: [London, New York, Paris, Stockholm]
+     *
+     * @param arr
+     * @return
+     */
     public static String[] sort(String[] arr) {
        for (int i = 0; i < arr.length; i++) {
            for (int j = i+1; j < arr.length; j++) {
