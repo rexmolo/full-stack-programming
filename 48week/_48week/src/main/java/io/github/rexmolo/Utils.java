@@ -18,4 +18,17 @@ public class Utils {
 
         System.out.printf(output);
     }
+
+    public static void printTwoDimentionalArr(int[][] numbers) {
+        for(int[] array : numbers) {
+            int index = 0;
+            for(int number : array) {
+                System.out.print(number);
+                if(index == array.length -1) {
+                System.out.println();
+                }
+                index++;
+            }
+        }
+    }
 }

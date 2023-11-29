@@ -42,20 +42,30 @@ class ArrTest {
     @Test
     void copyOf(){
         int[] numberArr = {5,6};
-        int[] exceptedArr = {5,6};
+        int[] expectedArr = {5,6};
 
         int[] actual = Arr.copyOf(numberArr);
-        assertEquals(Arrays.toString(numberArr), Arrays.toString(exceptedArr));
+        assertEquals(Arrays.toString(numberArr), Arrays.toString(expectedArr));
     }
 
     @Test
     void sort() {
         String[] sortArr = {"Paris", "London", "New York", "Stockholm"};
-        String[] excepted = {"London", "New York","Paris","Stockholm"};
+        String[] expected = {"London", "New York","Paris","Stockholm"};
 
         String[] actual = Arr.sort(sortArr);
 
-        assertEquals(Arrays.toString(excepted), Arrays.toString(actual));
+        assertArrayEquals(expected, actual);
     }
+
+//    @Test
+//    void filter() {
+//        int[] arr = {20, 20, 40, 20, 30, 40, 50, 60, 50};
+//        int[] expectedArr = {20, 40, 30, 50, 60};
+//
+//        int[] actual = Arr.filter(arr);
+//
+//        assertArrayEquals(expectedArr, actual);
+//    }
 
 }

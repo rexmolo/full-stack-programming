@@ -83,4 +83,23 @@ public class Arr {
     }
 
 
+    /**
+     * Write a program which will remove the duplicate elements of a given array [20, 20, 40, 20, 30, 40, 50, 60, 50].
+     *
+     * @param arr
+     * @return
+     */
+    public static void filter(int[] arr) {
+
+        int[][] markArr = new int[arr.length][2];
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr.length; j++) {
+                markArr[i][0] = arr[i];
+                markArr[i][1] = 0;
+            }
+
+        }
+
+Utils.printTwoDimentionalArr(markArr);
+    }
 }
