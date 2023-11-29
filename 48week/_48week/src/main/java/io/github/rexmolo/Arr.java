@@ -51,6 +51,20 @@ public class Arr {
     }
 
     /**
+     *
+     * @param hystack
+     * @param needle
+     * @return
+     */
+    public static int indexOf(int[] hystack, int needle) {
+        for (int i = 0; i < hystack.length; i++) {
+            if (hystack[i] == needle)
+                return i;
+        }
+        return -1;
+    }
+
+    /**
      * Write a program which will sort string array.
      * Expected output: String array: [Paris, London, New York, Stockholm]
      * Sort string array: [London, New York, Paris, Stockholm]
@@ -89,17 +103,15 @@ public class Arr {
      * @param arr
      * @return
      */
-    public static void filter(int[] arr) {
+    public static int[] filter(int[] arr) {
+        int[] newArr = new int[]{};
 
-        int[][] markArr = new int[arr.length][2];
         for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < arr.length; j++) {
-                markArr[i][0] = arr[i];
-                markArr[i][1] = 0;
-            }
-
+            if (indexOf(newArr, arr[i]) >= 0)
+                continue;
+            newArr = merge(newArr, new int[]{arr[i]});
         }
 
-Utils.printTwoDimentionalArr(markArr);
+        return newArr;
     }
 }

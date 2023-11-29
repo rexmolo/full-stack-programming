@@ -19,20 +19,21 @@ public class Main {
 
 //
 
-        NameRepository.setNames(moreNames);
+//        NameRepository.setNames(moreNames);
 //        NameRepository.clear();
 //        String t = NameRepository.find("Fredrik M");
 
-        NameRepository.add("simon a");
+//        NameRepository.add("simon a");
 
 //       NameRepository.remove("Fredrik M");
-        String[] n = NameRepository.findAll();
+//        String[] n = NameRepository.findAll();
 //
-        System.out.println(Arrays.toString(n));
+//        System.out.println(Arrays.toString(n));
 //        System.out.println(t);
 
-//        int[] arr = {20, 20, 40, 20, 30, 40, 50, 60, 50};
-//    Arr.filter(arr);
+        int[] arr = {20, 20, 40, 20, 30, 40, 50, 60, 50};
+
+        Arr.filter(arr);
 
     }
 
@@ -43,6 +44,7 @@ public class Main {
             System.out.printf("%s\t%s\n", worldcities[i][0], worldcities[i][1]);
         }
     }
+
 
 
 }
