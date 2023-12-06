@@ -6,14 +6,26 @@ public class Person {
     private String lastName;
     private String email;
 
-    public Person(String firstName, String lastName, String email) {}
+    public Person(String firstName, String lastName, String email) {
+        this.id = generateId();
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.checkArguments();
+    }
+
+    public int generateId(){
+        return ++this.id;
+    }
+
+    public void checkArguments(){
+        String[] fieldName = {"firstName", "lastName", "email"};
+        String[] fieldValue = {this.firstName, this.lastName, this.email};
+        utils.checkArguments(fieldName, fieldValue);
+    }
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getFirstName() {
@@ -21,6 +33,7 @@ public class Person {
     }
 
     public void setFirstName(String firstName) {
+        utils.checkArguments("firstName", firstName);
         this.firstName = firstName;
     }
 
@@ -29,6 +42,7 @@ public class Person {
     }
 
     public void setLastName(String lastName) {
+        utils.checkArguments("lastName", lastName);
         this.lastName = lastName;
     }
 
@@ -37,6 +51,7 @@ public class Person {
     }
 
     public void setEmail(String email) {
+        utils.checkArguments("email", email);
         this.email = email;
     }
 
