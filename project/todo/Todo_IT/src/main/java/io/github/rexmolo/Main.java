@@ -1,7 +1,28 @@
 package io.github.rexmolo;
 
+import java.util.Arrays;
+
 public class Main {
+
+    private static int id;
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+
+        try {
+
+            String[] a = {"a"};
+
+//            Person jackie = new Person(null, null, null);
+//            Person jackie = new Person("", "Ma", null);
+//            Person jackie = new Person("jackie", null, null);
+//            Person jackie = new Person("jackie", null, "ttt@aa.com");
+//            Person jackie = new Person("jackie", "Ma", "dddddf");
+
+            System.out.println(a[1]);
+
+        } catch (IllegalArgumentException ilae) {
+            System.out.println(ilae.getMessage());
+        }
+
     }
+
 }
