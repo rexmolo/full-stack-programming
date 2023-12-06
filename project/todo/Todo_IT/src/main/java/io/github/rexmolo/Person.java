@@ -1,5 +1,7 @@
 package io.github.rexmolo;
 
+import io.github.rexmolo.utils.verify;
+
 public class Person {
     private int id;
     private String firstName;
@@ -21,7 +23,7 @@ public class Person {
     public void checkArguments(){
         String[] fieldName = {"firstName", "lastName", "email"};
         String[] fieldValue = {this.firstName, this.lastName, this.email};
-        utils.checkArguments(fieldName, fieldValue);
+        verify.arguments(fieldName, fieldValue);
     }
 
     public int getId() {
@@ -33,7 +35,7 @@ public class Person {
     }
 
     public void setFirstName(String firstName) {
-        utils.checkArguments("firstName", firstName);
+        verify.arguments("firstName", firstName);
         this.firstName = firstName;
     }
 
@@ -42,7 +44,7 @@ public class Person {
     }
 
     public void setLastName(String lastName) {
-        utils.checkArguments("lastName", lastName);
+        verify.arguments("lastName", lastName);
         this.lastName = lastName;
     }
 
@@ -51,7 +53,7 @@ public class Person {
     }
 
     public void setEmail(String email) {
-        utils.checkArguments("email", email);
+        verify.arguments("email", email);
         this.email = email;
     }
 
