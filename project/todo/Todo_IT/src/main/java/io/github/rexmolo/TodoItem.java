@@ -25,7 +25,7 @@ public class TodoItem {
         this();
         this.title = title;
         this.taskDescription = taskDescription;
-        this.deadline = deadline;
+        this.setDeadline(deadline);
         this.creator = creator;
         this.done = done;
     }
@@ -69,6 +69,8 @@ public class TodoItem {
     }
 
     public void setDeadline(LocalDate deadline) {
+        LocalDate today = LocalDate.now();
+        if (today.isAfter(deadline)) throw new IllegalArgumentException("not allowed before today");
         this.deadline = deadline;
     }
 
