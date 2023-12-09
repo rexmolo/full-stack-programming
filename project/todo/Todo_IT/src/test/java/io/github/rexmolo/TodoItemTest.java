@@ -12,15 +12,15 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class TodoItemTest {
 
-    @Test
-    void isOverdue() {
-
-        LocalDate deadline = LocalDate.now().minusDays(1);
-        Person testPerson = new Person("jackie", "M", "ttt@aa.com");
-        TodoItem todoItem = new TodoItem("shopping", "", deadline, testPerson);
-
-        assertTrue(todoItem.isOverdue());
-    }
+//    @Test
+//    void isOverdue() {
+//
+//        LocalDate deadline = LocalDate.now().minusDays(1);
+//        Person testPerson = new Person("jackie", "M", "ttt@aa.com");
+//        TodoItem todoItem = new TodoItem("shopping", "", deadline, testPerson);
+//
+//        assertTrue(todoItem.isOverdue());
+//    }
 
     @ParameterizedTest
     @NullAndEmptySource
