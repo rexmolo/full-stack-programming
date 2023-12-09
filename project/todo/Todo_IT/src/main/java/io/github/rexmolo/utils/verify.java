@@ -35,7 +35,15 @@ public class verify {
         verify.arguments(fieldName, fieldValue, ++index);
     }
 
-//    public static void arguments(String[] fieldName, String[] fieldValue, int index, String type){
+
+    public static boolean checkString(String val){
+        if (val == null || val.isBlank() || val == "null")
+            return false;
+        return true;
+    }
+
+
+    //    public static void arguments(String[] fieldName, String[] fieldValue, int index, String type){
 //
 //        if (fieldValue.length != fieldName.length) throw new IllegalArgumentException("the length of filedName and fieldValue should be equal");
 //        if (index > fieldValue.length - 1) return;// out of bounds
@@ -45,14 +53,6 @@ public class verify {
 //
 //        verify.arguments(fieldName, fieldValue, ++index);
 //    }
-
-
-
-    public static boolean checkString(String val){
-        if (val == null || val.isEmpty() || val == "null")
-            return false;
-        return true;
-    }
 
 
 }
