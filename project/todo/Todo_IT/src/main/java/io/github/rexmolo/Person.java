@@ -20,7 +20,7 @@ public class Person {
         return ++this.id;
     }
 
-    public void checkArguments(){
+    private void checkArguments(){
         String[] fieldName = {"firstName", "lastName", "email"};
         String[] fieldValue = {this.firstName, this.lastName, this.email};
         verify.arguments(fieldName, fieldValue);

@@ -37,7 +37,7 @@ public class TodoItem {
         return false;
     }
 
-    public void checkArguments(){
+    private void checkArguments(){
         String[] fieldName = {"title"};
         String[] fieldValue = {this.title};
         verify.arguments(fieldName, fieldValue);
