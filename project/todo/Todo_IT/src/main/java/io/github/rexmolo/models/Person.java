@@ -10,6 +10,9 @@ public class Person {
     private String lastName;
     private String email;
 
+    private AppUser credentials;
+
+
     public Person(String firstName, String lastName, String email) {
         this.id = generateId();
         this.firstName = firstName;
@@ -60,13 +63,12 @@ public class Person {
         this.email = email;
     }
 
-    public String getSummary() {
-        return "Person{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                '}';
+    public AppUser getCredentials() {
+        return credentials;
+    }
+
+    public void setCredentials(AppUser credentials) {
+        this.credentials = credentials;
     }
 
     @Override

@@ -108,7 +108,7 @@ public class TodoItem {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof TodoItem todoItem)) return false;
-        return id == todoItem.id && done == todoItem.done && Objects.equals(title, todoItem.title) && Objects.equals(taskDescription, todoItem.taskDescription) && Objects.equals(deadline, todoItem.deadline) && Objects.equals(creator, todoItem.creator);
+        return id == todoItem.id && done == todoItem.done && Objects.equals(title, todoItem.title) && Objects.equals(taskDescription, todoItem.taskDescription) && Objects.equals(deadline, todoItem.deadline);
     }
 
     @Override

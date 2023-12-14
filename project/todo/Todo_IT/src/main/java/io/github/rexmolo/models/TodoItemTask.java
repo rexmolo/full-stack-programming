@@ -43,20 +43,11 @@ public class TodoItemTask {
     }
 
 
-    public String getSummary() {
-        return "TodoItemTask{" +
-                "id=" + id +
-                ", assigned=" + assigned +
-                ", todoItem=" + todoItem +
-                ", assignee=" + assignee +
-                '}';
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof TodoItemTask that)) return false;
-        return id == that.id && assigned == that.assigned && Objects.equals(todoItem, that.todoItem) && Objects.equals(assignee, that.assignee);
+        return id == that.id && assigned == that.assigned && Objects.equals(todoItem, that.todoItem);
     }
 
     @Override
