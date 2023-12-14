@@ -1,4 +1,4 @@
-package io.github.rexmolo;
+package io.github.rexmolo.models;
 
 import io.github.rexmolo.utils.verify;
 
