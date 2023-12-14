@@ -13,6 +13,10 @@ public class Drink extends Product {
         this.size = size;
     }
 
+    public String getSize() {
+        return size;
+    }
+
     public int getId(){
         return this.id;
     }
