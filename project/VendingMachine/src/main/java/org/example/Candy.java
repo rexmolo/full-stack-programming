@@ -1,7 +1,17 @@
 package org.example;
 import org.example.model.Abstract.Product;
+import org.example.Tools.IdGenerator;
 
 public class Candy extends Product {
+
+    private String productName;
+    private String flavor;
+
+    public Candy(String productName, int price, String flavor) {
+        super(productName, price);
+        this.flavor = flavor;
+        this.id = IdGenerator.genId();
+    }
 
 
     public String getProductName() {
@@ -12,11 +22,15 @@ public class Candy extends Product {
         this.productName = productName;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return this.price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         this.price = price;
+    }
+
+    public int getId() {
+        return this.id;
     }
 }

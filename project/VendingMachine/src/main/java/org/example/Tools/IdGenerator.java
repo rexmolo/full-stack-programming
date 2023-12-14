@@ -1,4 +1,4 @@
-package org.example.model.Tools;
+package org.example.Tools;
 
 import java.util.concurrent.atomic.AtomicInteger;
 

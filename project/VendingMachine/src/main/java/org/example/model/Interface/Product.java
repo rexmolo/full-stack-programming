@@ -4,6 +4,6 @@ public interface Product {
 
     public String getProductName();
     public void setProductName(String productName);
-    public double getPrice();
-    public void setPrice(double price);
+    public int getPrice();
+    public void setPrice(int price);
 }

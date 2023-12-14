@@ -1,4 +1,4 @@
-package org.example.model;
+package org.example;
 
 import org.example.model.Abstract.Product;
 import org.example.model.Interface.VendingMatchine;
@@ -33,10 +33,12 @@ public class VendingMachinelmpl implements VendingMatchine {
 
         Product expectedProduct = this.getProduct(id);
 
-        if (this.depositPool > expectedProduct.getPrice())
+        if (this.depositPool >= expectedProduct.getPrice()){
+            this.depositPool -= expectedProduct.getPrice();
             return expectedProduct;
-        else
+        } else {
             throw new IllegalArgumentException("You need more money");
+        }
 
     }
 

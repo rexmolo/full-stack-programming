@@ -1,23 +1,20 @@
 package org.example;
 
 import org.example.model.Abstract.Product;
+import org.example.Tools.IdGenerator;
 
 public class Drink extends Product {
 
+    private String size;
 
-    public String getProductName() {
-        return this.productName;
+    public Drink(String productName, int price, String size) {
+        super(productName, price);
+        this.id = IdGenerator.genId();
+        this.size = size;
     }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
+    public int getId(){
+        return this.id;
     }
 
-    public double getPrice() {
-        return this.price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
 }
