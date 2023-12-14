@@ -3,6 +3,7 @@ package io.github.rexmolo.models;
 import io.github.rexmolo.utils.verify;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class TodoItem {
     private int id;
@@ -103,15 +104,16 @@ public class TodoItem {
                 '}';
     }
 
-
     @Override
-    public int hashCode() {
-        return super.hashCode();
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof TodoItem todoItem)) return false;
+        return id == todoItem.id && done == todoItem.done && Objects.equals(title, todoItem.title) && Objects.equals(taskDescription, todoItem.taskDescription) && Objects.equals(deadline, todoItem.deadline) && Objects.equals(creator, todoItem.creator);
     }
 
     @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
+    public int hashCode() {
+        return Objects.hash(id);
     }
 
     @Override

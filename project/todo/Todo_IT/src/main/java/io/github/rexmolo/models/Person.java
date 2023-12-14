@@ -2,6 +2,8 @@ package io.github.rexmolo.models;
 
 import io.github.rexmolo.utils.verify;
 
+import java.util.Objects;
+
 public class Person {
     private int id;
     private String firstName;
@@ -67,15 +69,17 @@ public class Person {
                 '}';
     }
 
-
     @Override
-    public int hashCode() {
-        return super.hashCode();
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Person person = (Person) o;
+        return id == person.id && Objects.equals(firstName, person.firstName) && Objects.equals(lastName, person.lastName) && Objects.equals(email, person.email);
     }
 
     @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
+    public int hashCode() {
+        return Objects.hash(id, firstName);
     }
 
     @Override
