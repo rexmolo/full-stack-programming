@@ -1,6 +1,6 @@
 package org.example.model.Abstract;
 
-public abstract class Product implements org.example.model.Interface.Product {
+public abstract class Product {
 
     public int id;
     protected String productName;
