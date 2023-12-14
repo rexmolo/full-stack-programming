@@ -20,6 +20,7 @@ public class Person {
         return ++this.id;
     }
 
+
     private void checkArguments(){
         String[] fieldName = {"firstName", "lastName", "email"};
         String[] fieldValue = {this.firstName, this.lastName, this.email};
@@ -64,6 +65,17 @@ public class Person {
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 '}';
+    }
+
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
     }
 
     @Override

@@ -21,6 +21,7 @@ public class TodoItem {
         this(title, taskDescription, deadline, creator, false);
     }
 
+
     public TodoItem(String title, String taskDescription, LocalDate deadline, Person creator, boolean done) {
         this();
         this.title = title;
@@ -98,6 +99,29 @@ public class TodoItem {
                 ", taskDescription='" + taskDescription + '\'' +
                 ", deadline=" + deadline +
                 ", done=" + (done ? "finished" : "unfinished") +
+                ", creator=" + creator +
+                '}';
+    }
+
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+    }
+
+    @Override
+    public String toString() {
+        return "TodoItem{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", taskDescription='" + taskDescription + '\'' +
+                ", deadline=" + deadline +
+                ", done=" + done +
                 ", creator=" + creator +
                 '}';
     }
