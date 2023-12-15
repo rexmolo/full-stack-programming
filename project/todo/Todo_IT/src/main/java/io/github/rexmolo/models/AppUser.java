@@ -1,5 +1,7 @@
 package io.github.rexmolo.models;
 
+import io.github.rexmolo.utils.Verify;
+
 import java.util.Objects;
 
 public class AppUser {
@@ -19,6 +21,7 @@ public class AppUser {
     }
 
     public void setUserName(String userName) {
+        Verify.arguments("userName", userName);
         this.userName = userName;
     }
 
@@ -27,6 +30,7 @@ public class AppUser {
     }
 
     public void setPassword(String password) {
+        Verify.arguments("password", password);
         this.password = password;
     }
 

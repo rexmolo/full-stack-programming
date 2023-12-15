@@ -1,5 +1,6 @@
 package io.github.rexmolo.models;
 
+import io.github.rexmolo.exception.ErrMsg;
 import io.github.rexmolo.utils.Verify;
 
 import java.time.LocalDate;
@@ -72,7 +73,7 @@ public class TodoItem {
 
     public void setDeadline(LocalDate deadline) {
         LocalDate today = LocalDate.now();
-        if (today.isAfter(deadline)) throw new IllegalArgumentException("not allowed before today");
+        if (today.isAfter(deadline)) ErrMsg.custom("not allowed before today");
         this.deadline = deadline;
     }
 

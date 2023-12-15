@@ -28,7 +28,7 @@ public class Verify {
 //            type = fieldNameArr[1];
 //        }
         if (!Verify.checkString(fieldValue[index]))
-            ErrMsg.notAllowNull(fieldValue[index]);
+            ErrMsg.notAllowNull(fieldName[index]);
 
         Verify.arguments(fieldName, fieldValue, ++index);
     }
