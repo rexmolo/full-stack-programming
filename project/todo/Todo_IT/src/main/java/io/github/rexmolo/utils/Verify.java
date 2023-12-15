@@ -1,6 +1,6 @@
 package io.github.rexmolo.utils;
 
-import io.github.rexmolo.config.ErrMsg;
+import io.github.rexmolo.exception.ErrMsg;
 
 public class Verify {
 
@@ -16,7 +16,7 @@ public class Verify {
 
     public static void arguments(String[] fieldName, String[] fieldValue, int index){
 
-        if (fieldValue.length != fieldName.length) throw new IllegalArgumentException("the length of filedName and fieldValue should be equal");
+        if (fieldValue.length != fieldName.length) ErrMsg.custom("the length of filedName and fieldValue should be equal");
         if (index > fieldValue.length - 1) return;// out of bounds
 
 //        String type;
@@ -28,7 +28,7 @@ public class Verify {
 //            type = fieldNameArr[1];
 //        }
         if (!Verify.checkString(fieldValue[index]))
-            throw new IllegalArgumentException(ErrMsg.IllegalArgument(fieldName[index]));
+            ErrMsg.notAllowNull(fieldValue[index]);
 
         Verify.arguments(fieldName, fieldValue, ++index);
     }
