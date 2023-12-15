@@ -2,18 +2,16 @@ package io.github.rexmolo.utils;
 
 import io.github.rexmolo.config.ErrMsg;
 
-import java.time.LocalDate;
-
-public class verify {
+public class Verify {
 
     public static void arguments(String fieldName, String fieldValue){
         String[] fn = {fieldName};
         String[] fv = {fieldValue};
-        verify.arguments(fn, fv, 0);
+        Verify.arguments(fn, fv, 0);
     }
 
     public static void arguments(String[] fieldName, String[] fieldValue){
-        verify.arguments(fieldName, fieldValue, 0);
+        Verify.arguments(fieldName, fieldValue, 0);
     }
 
     public static void arguments(String[] fieldName, String[] fieldValue, int index){
@@ -29,10 +27,10 @@ public class verify {
 //            String[] fieldNameArr = fieldName[index].split("|");
 //            type = fieldNameArr[1];
 //        }
-        if (!verify.checkString(fieldValue[index]))
+        if (!Verify.checkString(fieldValue[index]))
             throw new IllegalArgumentException(ErrMsg.IllegalArgument(fieldName[index]));
 
-        verify.arguments(fieldName, fieldValue, ++index);
+        Verify.arguments(fieldName, fieldValue, ++index);
     }
 
 

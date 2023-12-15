@@ -1,6 +1,6 @@
 package io.github.rexmolo.models;
 
-import io.github.rexmolo.utils.verify;
+import io.github.rexmolo.utils.Verify;
 
 import java.time.LocalDate;
 import java.util.Objects;
@@ -42,7 +42,7 @@ public class TodoItem {
     private void checkArguments(){
         String[] fieldName = {"title"};
         String[] fieldValue = {this.title};
-        verify.arguments(fieldName, fieldValue);
+        Verify.arguments(fieldName, fieldValue);
     }
 
     public int generateId(){
@@ -54,7 +54,7 @@ public class TodoItem {
     }
 
     public void setTitle(String title) {
-        verify.arguments("title", title);
+        Verify.arguments("title", title);
         this.title = title;
     }
 

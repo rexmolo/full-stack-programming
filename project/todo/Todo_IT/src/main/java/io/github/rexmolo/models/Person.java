@@ -1,6 +1,6 @@
 package io.github.rexmolo.models;
 
-import io.github.rexmolo.utils.verify;
+import io.github.rexmolo.utils.Verify;
 
 import java.util.Objects;
 
@@ -29,7 +29,7 @@ public class Person {
     private void checkArguments(){
         String[] fieldName = {"firstName", "lastName", "email"};
         String[] fieldValue = {this.firstName, this.lastName, this.email};
-        verify.arguments(fieldName, fieldValue);
+        Verify.arguments(fieldName, fieldValue);
     }
 
     public int getId() {
@@ -41,7 +41,7 @@ public class Person {
     }
 
     public void setFirstName(String firstName) {
-        verify.arguments("firstName", firstName);
+        Verify.arguments("firstName", firstName);
         this.firstName = firstName;
     }
 
@@ -50,7 +50,7 @@ public class Person {
     }
 
     public void setLastName(String lastName) {
-        verify.arguments("lastName", lastName);
+        Verify.arguments("lastName", lastName);
         this.lastName = lastName;
     }
 
@@ -59,7 +59,7 @@ public class Person {
     }
 
     public void setEmail(String email) {
-        verify.arguments("email", email);
+        Verify.arguments("email", email);
         this.email = email;
     }
 
