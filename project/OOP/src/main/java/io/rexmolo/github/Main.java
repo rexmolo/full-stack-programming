@@ -1,10 +1,13 @@
 package io.rexmolo.github;
 
-import java.util.ArrayList;
-
 public class Main {
     public static void main(String[] args) {
 
+
+
+    }
+
+    private static void runDice() {
         Dice[] Dices = Dice.values();
 
         for (Dice d : Dices) {
