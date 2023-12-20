@@ -3,6 +3,7 @@ package se.lexicon.course_manager.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Objects;
 
@@ -17,6 +18,7 @@ public class Course implements Serializable {
     public Course(int id, String courseName) {
         setId(id);
         this.courseName = courseName;
+        this.students = new ArrayList<>();
     }
 
     public Course(int id, String courseName, LocalDate startDate, int weekDuration) {

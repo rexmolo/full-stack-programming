@@ -8,10 +8,11 @@ import se.lexicon.course_manager.data.service.converter.Converters;
 import se.lexicon.course_manager.dto.forms.CreateCourseForm;
 import se.lexicon.course_manager.dto.forms.UpdateCourseForm;
 import se.lexicon.course_manager.dto.views.CourseView;
+import se.lexicon.course_manager.model.Course;
 
 
 import java.time.LocalDate;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class CourseManager implements CourseService {
@@ -29,17 +30,56 @@ public class CourseManager implements CourseService {
 
     @Override
     public CourseView create(CreateCourseForm form) {
-        return null;
+        Course c = this.courseDao.createCourse(
+                form.getCourseName(),
+                form.getStartDate(),
+                form.getWeekDuration());
+
+        return new CourseView(
+                c.getId(),
+                c.getCourseName(),
+                c.getStartDate(),
+                c.getWeekDuration(),
+                (List)c.getStudents()
+        );
     }
 
     @Override
     public CourseView update(UpdateCourseForm form) {
-        return null;
+        Course c = this.courseDao.findById(form.getId());
+        c.setCourseName(form.getCourseName());
+        c.setStartDate(form.getStartDate());
+        c.setWeekDuration(form.getWeekDuration());
+
+        return new CourseView(
+                c.getId(),
+                c.getCourseName(),
+                c.getStartDate(),
+                c.getWeekDuration(),
+                (List)c.getStudents()
+        );
     }
 
     @Override
     public List<CourseView> searchByCourseName(String courseName) {
-        return null;
+        List<CourseView> clv = new ArrayList<>();
+        Collection<Course> cl = this.courseDao.findByNameContains(courseName);
+        if (cl.size() == 0)
+            return clv;
+
+        for (Course c: cl) {
+            clv.add(
+                    new CourseView(
+                            c.getId(),
+                            c.getCourseName(),
+                            c.getStartDate(),
+                            c.getWeekDuration(),
+                            (List)c.getStudents()
+                    )
+            );
+        }
+
+        return clv;
     }
 
     @Override
@@ -69,7 +109,25 @@ public class CourseManager implements CourseService {
 
     @Override
     public List<CourseView> findAll() {
-        return null;
+        List<CourseView> clv = new ArrayList<>();
+        Collection<Course> cl = this.courseDao.findAll();
+        if (cl.size() == 0)
+            return clv;
+
+        for (Course c: cl) {
+            clv.add(
+                    new CourseView(
+                            c.getId(),
+                            c.getCourseName(),
+                            c.getStartDate(),
+                            c.getWeekDuration(),
+                            (List)c.getStudents()
+                    )
+            );
+        }
+
+        return clv;
+
     }
 
     @Override
