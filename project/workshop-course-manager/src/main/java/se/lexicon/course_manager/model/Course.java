@@ -1,5 +1,6 @@
 package se.lexicon.course_manager.model;
 
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Collection;
@@ -12,6 +13,21 @@ public class Course implements Serializable {
     private LocalDate startDate;
     private int weekDuration;
     private Collection<Student> students;
+
+    public Course(int id, String courseName) {
+        setId(id);
+        this.courseName = courseName;
+    }
+
+    public Course(int id, String courseName, LocalDate startDate, int weekDuration) {
+        this(id, courseName);
+        this.startDate = startDate;
+        this.weekDuration = weekDuration;
+    }
+
+    private void setId(int id) {
+        this.id = id;
+    }
 
     public String getCourseName() {
         return courseName;
