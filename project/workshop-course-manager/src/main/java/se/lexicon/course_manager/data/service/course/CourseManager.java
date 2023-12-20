@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import se.lexicon.course_manager.data.dao.CourseDao;
 import se.lexicon.course_manager.data.dao.StudentDao;
 import se.lexicon.course_manager.data.service.converter.Converters;
+import se.lexicon.course_manager.data.service.converter.ModelToDto;
 import se.lexicon.course_manager.dto.forms.CreateCourseForm;
 import se.lexicon.course_manager.dto.forms.UpdateCourseForm;
 import se.lexicon.course_manager.dto.views.CourseView;
@@ -35,13 +36,7 @@ public class CourseManager implements CourseService {
                 form.getStartDate(),
                 form.getWeekDuration());
 
-        return new CourseView(
-                c.getId(),
-                c.getCourseName(),
-                c.getStartDate(),
-                c.getWeekDuration(),
-                (List)c.getStudents()
-        );
+        return this.converters.courseToCourseView(c);
     }
 
     @Override
@@ -51,13 +46,7 @@ public class CourseManager implements CourseService {
         c.setStartDate(form.getStartDate());
         c.setWeekDuration(form.getWeekDuration());
 
-        return new CourseView(
-                c.getId(),
-                c.getCourseName(),
-                c.getStartDate(),
-                c.getWeekDuration(),
-                (List)c.getStudents()
-        );
+        return this.converters.courseToCourseView(c);
     }
 
     @Override
@@ -68,15 +57,7 @@ public class CourseManager implements CourseService {
             return clv;
 
         for (Course c: cl) {
-            clv.add(
-                    new CourseView(
-                            c.getId(),
-                            c.getCourseName(),
-                            c.getStartDate(),
-                            c.getWeekDuration(),
-                            (List)c.getStudents()
-                    )
-            );
+            clv.add(this.converters.courseToCourseView(c));
         }
 
         return clv;
@@ -115,15 +96,7 @@ public class CourseManager implements CourseService {
             return clv;
 
         for (Course c: cl) {
-            clv.add(
-                    new CourseView(
-                            c.getId(),
-                            c.getCourseName(),
-                            c.getStartDate(),
-                            c.getWeekDuration(),
-                            (List)c.getStudents()
-                    )
-            );
+            clv.add(this.converters.courseToCourseView(c));
         }
 
         return clv;

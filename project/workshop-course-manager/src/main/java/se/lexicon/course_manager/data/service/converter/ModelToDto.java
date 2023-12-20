@@ -19,7 +19,14 @@ public class ModelToDto implements Converters {
 
     @Override
     public CourseView courseToCourseView(Course course) {
-        return null;
+
+        return new CourseView(
+                course.getId(),
+                course.getCourseName(),
+                course.getStartDate(),
+                course.getWeekDuration(),
+                (List)course.getStudents()
+        );
     }
 
     @Override
