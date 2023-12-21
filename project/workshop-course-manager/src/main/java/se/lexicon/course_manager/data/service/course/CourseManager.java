@@ -51,9 +51,8 @@ public class CourseManager implements CourseService {
 
     @Override
     public List<CourseView> searchByCourseName(String courseName) {
-        List<CourseView> clv = new ArrayList<>();
         Collection<Course> cl = this.courseDao.findByNameContains(courseName);
-        if (cl.size() == 0) return clv;
+        if (cl.size() == 0) return null;
 
         return this.converters.coursesToCourseViews(cl);
     }
@@ -61,18 +60,14 @@ public class CourseManager implements CourseService {
     @Override
     public List<CourseView> searchByDateBefore(LocalDate end) {
         Collection<Course> cl = this.courseDao.findByDateBefore(end);
-
         if (cl.size() == 0) return null;
         return this.converters.coursesToCourseViews(cl);
     }
 
     @Override
     public List<CourseView> searchByDateAfter(LocalDate start) {
-        List<CourseView> clv = new ArrayList<>();
         Collection<Course> cl = this.courseDao.findByDateAfter(start);
-
-        if (cl.size() == 0) return clv;
-
+        if (cl.size() == 0) return null;
         return this.converters.coursesToCourseViews(cl);
 
     }
@@ -94,10 +89,8 @@ public class CourseManager implements CourseService {
 
     @Override
     public List<CourseView> findAll() {
-        List<CourseView> clv = new ArrayList<>();
         Collection<Course> cl = this.courseDao.findAll();
-        if (cl.size() == 0) return clv;
-
+        if (cl.size() == 0) return null;
         return this.converters.coursesToCourseViews(cl);
     }
 
