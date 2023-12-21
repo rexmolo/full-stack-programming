@@ -65,16 +65,10 @@ public class CourseManager implements CourseService {
 
     @Override
     public List<CourseView> searchByDateBefore(LocalDate end) {
-        List<CourseView> clv = new ArrayList<>();
         Collection<Course> cl = this.courseDao.findByDateBefore(end);
 
-        if (cl.size() == 0) return clv;
-
-        for(Course c: cl) {
-            clv.add(this.converters.courseToCourseView(c));
-        }
-
-        return clv;
+        if (cl.size() == 0) return null;
+        return this.converters.coursesToCourseViews(cl);
     }
 
     @Override
