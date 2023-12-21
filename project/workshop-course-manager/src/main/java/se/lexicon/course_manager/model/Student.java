@@ -10,6 +10,20 @@ public class Student implements Serializable {
     private String email;
     private String address;
 
+    public Student(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public Student(int id, String name, String email, String address) {
+        this(id, name);
+        this.email = email;
+        this.address = address;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public int getId() {
         return this.id;
