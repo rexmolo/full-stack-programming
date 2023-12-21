@@ -7,11 +7,14 @@ import se.lexicon.course_manager.data.dao.StudentDao;
 import se.lexicon.course_manager.data.service.converter.Converters;
 import se.lexicon.course_manager.dto.forms.CreateStudentForm;
 import se.lexicon.course_manager.dto.forms.UpdateStudentForm;
+import se.lexicon.course_manager.dto.views.CourseView;
 import se.lexicon.course_manager.dto.views.StudentView;
 import se.lexicon.course_manager.model.Course;
 import se.lexicon.course_manager.model.Student;
 
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Service
@@ -51,26 +54,32 @@ public class StudentManager implements StudentService {
 
     @Override
     public StudentView findById(int id) {
-        return null;
+        Student st = this.studentDao.findById(id);
+        return this.converters.studentToStudentView(st);
     }
 
     @Override
     public StudentView searchByEmail(String email) {
-        return null;
+        Student st = this.studentDao.findByEmailIgnoreCase(email);
+        return this.converters.studentToStudentView(st);
     }
 
     @Override
     public List<StudentView> searchByName(String name) {
-        return null;
+        Collection<Student> stc = this.studentDao.findByNameContains(name);
+        if (stc.size() == 0) return null;
+        return this.converters.studentsToStudentViews(stc);
     }
 
     @Override
     public List<StudentView> findAll() {
-        return null;
+        Collection<Student> stc = this.studentDao.findAll();
+        if (stc.size() == 0) return null;
+        return this.converters.studentsToStudentViews(stc);
     }
 
     @Override
     public boolean deleteStudent(int id) {
-        return false;
+        return this.studentDao.removeStudent(this.studentDao.findById(id));
     }
 }
