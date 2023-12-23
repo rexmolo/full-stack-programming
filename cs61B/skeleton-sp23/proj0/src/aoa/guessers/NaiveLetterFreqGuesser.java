@@ -1,6 +1,10 @@
 package aoa.guessers;
 
 import aoa.utils.FileUtils;
+import edu.princeton.cs.algs4.In;
+
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -21,7 +25,21 @@ public class NaiveLetterFreqGuesser implements Guesser {
      *  This task is similar to something you did in hw0b! */
     public Map<Character, Integer> getFrequencyMap() {
         // TODO: Fill in this method.
-        return null;
+        Map<Character, Integer> frequencyMap = new HashMap<>();
+
+        Iterator wordsIterator = words.iterator();
+        while (wordsIterator.hasNext()) {
+            String nextWord = wordsIterator.next().toString();
+            for (int i = 0; i < nextWord.length(); i++) {
+                Character ii = nextWord.charAt(i);
+                if (frequencyMap.containsKey(ii)){
+                    frequencyMap.replace(ii, frequencyMap.get(ii), frequencyMap.get(ii) + 1);
+                } else {
+                    frequencyMap.put(ii, 1);
+                }
+            }
+        }
+        return frequencyMap;
     }
 
     /** Returns the most common letter in WORDS that has not yet been guessed
