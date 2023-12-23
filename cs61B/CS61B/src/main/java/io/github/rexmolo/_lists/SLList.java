@@ -29,6 +29,16 @@ public class SLList<T> {
         return first.item;
     }
 
+    public void addLast(T x) {
+        size += 1;
+        StuffNode p = first;
+
+        while (p.next != null)
+            p = p.next;
+        p.next = new StuffNode(x, null);
+    }
+    
+
     public static void main(String[] args) {
         SLList<String> sl = new SLList<String>("one");
         sl.addFirst("two");
