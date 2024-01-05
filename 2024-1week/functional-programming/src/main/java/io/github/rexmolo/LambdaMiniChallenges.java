@@ -1,9 +1,16 @@
 package io.github.rexmolo;
 
 import java.util.Arrays;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.UnaryOperator;
+import java.util.function.*;
+
+class PlainOld{
+    private static int last_id = 1;
+    private int id;
+    public PlainOld() {
+        id = PlainOld.last_id++;
+        System.out.println("Creating a PlainOld Object id = " + id);
+    }
+}
 
 public class LambdaMiniChallenges {
 
@@ -29,10 +36,21 @@ public class LambdaMiniChallenges {
             }
             return returnVal.toString();
         };
-
-        System.out.println(everySecondCharPrinter("0123456789", everySecondCharLambda));
+//        ArrayList<String> aa = new ArrayList<>(List.of("a", "b"));
+//        aa.removeIf(i -> i.equals("b"));
+//        System.out.println(aa);
+//        System.out.println(everySecondCharPrinter("0123456789", everySecondCharLambda));
 
 //        printTheParts.accept("dddd fdfdf");
+
+
+        //Method Reference;
+        PlainOld[] pojo = seedArray(PlainOld::new, 10);
+
+    }
+
+    private static <T> void calculator(BinaryOperator<T> func, T v1, T v2) {
+
     }
 
     public static String everySecondCharPrinter(String source, Function<String, String> uo) {
@@ -72,5 +90,13 @@ public class LambdaMiniChallenges {
         };
     }
 
+
+
+
+    private static PlainOld[] seedArray(Supplier<PlainOld> reference, int count) {
+        PlainOld[] array = new PlainOld[count];
+        Arrays.setAll(array, i -> reference.get());
+        return array;
+    }
 
 }
