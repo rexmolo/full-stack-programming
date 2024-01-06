@@ -45,8 +45,42 @@ public class LambdaMiniChallenges {
 
 
         //Method Reference;
-        PlainOld[] pojo = seedArray(PlainOld::new, 10);
+//        PlainOld[] pojo = seedArray(PlainOld::new, 10);
 
+        convenienceMethodsOnFunctionalInterfaces();
+    }
+
+    public static void convenienceMethodsOnFunctionalInterfaces() {
+        String name = "Jackie";
+        Function<String, String> uCase = String::toUpperCase;
+
+        System.out.println(uCase.apply(name));
+
+        Function<String, String> lastName = s -> s.concat(" Ma");
+        Function<String, String> uCaseLastName = uCase.andThen(lastName);
+
+        System.out.println(uCaseLastName.apply(name));
+
+        uCaseLastName = uCase.compose(lastName);
+        System.out.println(uCaseLastName.apply(name));
+
+        Function<String, String[]> f0 = uCase
+                .andThen(s -> s.concat( " Ma"))
+                .andThen(s -> s.split(" "));
+        System.out.println(Arrays.toString(f0.apply(name)));
+
+        Function<String, String> f2 = uCase
+                .andThen(s -> s.concat(" Ma"))
+                .andThen(s -> s.split(" "))
+                .andThen(s -> String.join("-", s));
+        System.out.println(f2.apply(name));
+
+        Function<String, Integer> f1 = uCase
+                .andThen(s -> s.concat(" Ma"))
+                .andThen(s -> s.split(" "))
+                .andThen(s -> String.join(", ", s))
+                .andThen(String::length);
+        System.out.println(f1.apply(name));
     }
 
     private static <T> void calculator(BinaryOperator<T> func, T v1, T v2) {
