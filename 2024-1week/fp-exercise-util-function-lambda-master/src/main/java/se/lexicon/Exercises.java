@@ -1,10 +1,19 @@
 package se.lexicon;
 
+import se.lexicon.data.CSVReader;
 import se.lexicon.data.DataStorage;
+import se.lexicon.model.Person;
+import se.lexicon.util.PersonGenerator;
+
+import java.util.List;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class Exercises {
 
     private final static DataStorage storage = DataStorage.INSTANCE;
+    private final static CSVReader csvReader = CSVReader.getInstance();
+
 
     /*
        TODO:  1.	Find everyone that has firstName: “Erik” using findMany().
@@ -64,7 +73,11 @@ public class Exercises {
     public static void exercise6(String message) {
         System.out.println(message);
         //Write your code here
+        Function<Person, String> personToString = Person::toString;
+        Predicate<Person> filter = person -> person.getFirstName().startsWith("E");
+        List<String> eachToString = storage.findManyAndMapEachToString(filter, personToString);
 
+        eachToString.forEach(System.out::println);
         System.out.println("----------------------");
     }
 
