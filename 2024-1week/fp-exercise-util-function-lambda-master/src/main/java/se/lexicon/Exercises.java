@@ -69,6 +69,9 @@ public class Exercises {
     public static void exercise5(String message) {
         System.out.println(message);
         //Write your code here
+        Function<Person, String> func = person -> "name: " + person.getFirstName() + " " + person.getLastName() + " born " + person.getBirthDate() + ".";
+        String personId123Str = storage.findOneAndMapToString(person -> person.getId() == 456, func);
+        System.out.println(personId123Str);
 
         System.out.println("----------------------");
     }
