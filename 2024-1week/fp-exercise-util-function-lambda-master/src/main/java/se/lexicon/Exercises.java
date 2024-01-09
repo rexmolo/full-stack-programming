@@ -6,6 +6,7 @@ import se.lexicon.model.Gender;
 import se.lexicon.model.Person;
 import se.lexicon.util.PersonGenerator;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -43,7 +44,8 @@ public class Exercises {
     public static void exercise3(String message) {
         System.out.println(message);
         //Write your code here
-
+        List<Person> bornAfter2000 = storage.findMany(person -> person.getBirthDate().isAfter(LocalDate.parse("2000-01-01")));
+        bornAfter2000.forEach(System.out::println);
         System.out.println("----------------------");
     }
 
