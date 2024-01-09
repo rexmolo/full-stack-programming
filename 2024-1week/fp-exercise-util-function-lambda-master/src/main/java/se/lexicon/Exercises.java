@@ -119,6 +119,10 @@ public class Exercises {
     public static void exercise9(String message) {
         System.out.println(message);
         //Write your code here
+        storage.findAndDo(
+                person -> person.getLastName().contains(person.getFirstName()),
+                System.out::println
+                );
 
         System.out.println("----------------------");
     }
