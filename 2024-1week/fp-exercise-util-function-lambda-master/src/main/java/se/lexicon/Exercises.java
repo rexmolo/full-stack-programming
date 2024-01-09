@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -167,6 +168,11 @@ public class Exercises {
     public static void exercise12(String message) {
         System.out.println(message);
         //Write your code here
+        Predicate<Person> filter = person -> person.getBirthDate().isBefore(LocalDate.parse("1950-01-01"));
+//        Comparator<Person> comparator = (o1, o2) -> o1.getBirthDate().;
+//        Comparator<Person> comparator = (o1, o2) -> o1.getBirthDate().compareTo(o2.getBirthDate());
+        Comparator<Person> comparator = Comparator.comparing(Person::getBirthDate);
+        storage.findAndSort(filter, comparator.reversed()).forEach(System.out::println);
 
         System.out.println("----------------------");
     }
