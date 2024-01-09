@@ -55,6 +55,8 @@ public class Exercises {
     public static void exercise4(String message) {
         System.out.println(message);
         //Write your code here
+        Person personId123 = storage.findOne(person -> person.getId() == 123);
+        System.out.println(personId123.toString());
 
         System.out.println("----------------------");
 
