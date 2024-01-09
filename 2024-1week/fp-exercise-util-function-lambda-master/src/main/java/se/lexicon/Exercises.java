@@ -8,6 +8,8 @@ import se.lexicon.util.PersonGenerator;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -133,6 +135,18 @@ public class Exercises {
     public static void exercise10(String message) {
         System.out.println(message);
         //Write your code here
+        Predicate<Person> testPalindrome = person -> {
+            char[] firstName = person.getFirstName().toLowerCase().toCharArray();
+            char[] reverseFirstName = new char[firstName.length];
+            int j = 0;
+            for (int i = firstName.length - 1; i >= 0; i--) {
+                reverseFirstName[j] = firstName[i];
+                j++;
+            }
+            return Arrays.toString(firstName).equals(Arrays.toString(reverseFirstName));
+        };
+
+        storage.findAndDo(testPalindrome, System.out::println);
 
         System.out.println("----------------------");
     }
