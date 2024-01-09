@@ -7,6 +7,7 @@ import se.lexicon.model.Person;
 import se.lexicon.util.PersonGenerator;
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.List;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -97,7 +98,8 @@ public class Exercises {
     public static void exercise7(String message) {
         System.out.println(message);
         //Write your code here
-
+        List<String> eachToString = storage.findManyAndMapEachToString(person -> Period.between(person.getBirthDate(), LocalDate.now()).getYears() < 10, Person::toString);
+        eachToString.forEach(System.out::println);
         System.out.println("----------------------");
     }
 
@@ -107,7 +109,7 @@ public class Exercises {
     public static void exercise8(String message) {
         System.out.println(message);
         //Write your code here
-
+        storage.findAndDo(person -> person.getFirstName().equals("Ulf"), System.out::println);
         System.out.println("----------------------");
     }
 
