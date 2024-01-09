@@ -82,9 +82,9 @@ public class Exercises {
     public static void exercise6(String message) {
         System.out.println(message);
         //Write your code here
-        Function<Person, String> personToString = Person::toString;
-        Predicate<Person> filter = person -> person.getFirstName().startsWith("E");
-        List<String> eachToString = storage.findManyAndMapEachToString(filter, personToString);
+//        Function<Person, String> personToString = Person::toString;
+//        Predicate<Person> filter = person -> person.getFirstName().startsWith("E");
+        List<String> eachToString = storage.findManyAndMapEachToString(person -> person.getFirstName().startsWith("E"), Person::toString);
 
         eachToString.forEach(System.out::println);
         System.out.println("----------------------");
