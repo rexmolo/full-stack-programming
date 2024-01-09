@@ -12,7 +12,6 @@ import java.util.function.Predicate;
 public class Exercises {
 
     private final static DataStorage storage = DataStorage.INSTANCE;
-    private final static CSVReader csvReader = CSVReader.getInstance();
 
 
     /*
@@ -21,7 +20,8 @@ public class Exercises {
     public static void exercise1(String message) {
         System.out.println(message);
         //Write your code here
-
+        List<Person> personLs = storage.findMany(p -> p.getFirstName().equals("Erik"));
+        personLs.forEach(System.out::println);
         System.out.println("----------------------");
     }
 
