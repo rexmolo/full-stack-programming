@@ -2,6 +2,7 @@ package se.lexicon;
 
 import se.lexicon.data.CSVReader;
 import se.lexicon.data.DataStorage;
+import se.lexicon.model.Gender;
 import se.lexicon.model.Person;
 import se.lexicon.util.PersonGenerator;
 
@@ -31,7 +32,8 @@ public class Exercises {
     public static void exercise2(String message) {
         System.out.println(message);
         //Write your code here
-
+        List<Person> femals = storage.findMany(person -> person.getGender().equals(Gender.FEMALE));
+        femals.forEach(System.out::println);
         System.out.println("----------------------");
     }
 
