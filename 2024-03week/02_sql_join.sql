@@ -153,7 +153,14 @@ select * from city where ID in (select Capital from country where Region=@r);
 
 #
 # 19: What unique languages are spoken in the countries in the same region as the city named Riga
-#
+SET @r = (select ct.Region from city as c 
+ join country as ct 
+on c.CountryCode = ct.Code
+where c.`Name`="Riga");
+
+Select Language,isOfficial from countrylanguage where CountryCode in (select Code from country where Region=@r);
+
+
 #
 # 20: Get the name of the most populous city
 #
