@@ -126,8 +126,14 @@ where city.`Population` = 122199;
 
 #
 # 16: What names of the cities are in the same country as the city with a population of 122199 (excluding the that city itself)
-#
-
+select city.*, country.name as city_name from city left join country
+ON city.`CountryCode` = country.`Code` 
+where city.`Population` != 122199
+and country.`Code` = (
+select city.CountryCode from city left join country
+ON city.`CountryCode` = country.`Code` 
+where city.`Population` = 122199
+)
 #
 # 17: What are the city names in the country where Luanda is capital?
 #
