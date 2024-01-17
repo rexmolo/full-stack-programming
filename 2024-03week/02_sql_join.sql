@@ -144,6 +144,13 @@ select CountryCode from city where `Name`="Luanda");
 #
 # 18: What are the names of the capital cities in countries in the same region as the city named Yaren
 #
+SET @r = (select ct.Region from city as c 
+ join country as ct 
+on c.CountryCode = ct.Code
+where c.`Name`="Yaren");
+
+select * from city where ID in (select Capital from country where Region=@r);
+
 #
 # 19: What unique languages are spoken in the countries in the same region as the city named Riga
 #
