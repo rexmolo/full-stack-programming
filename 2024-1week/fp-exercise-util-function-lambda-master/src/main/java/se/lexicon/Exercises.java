@@ -184,6 +184,8 @@ public class Exercises {
         System.out.println(message);
         //Write your code here
 
+//        storage.findAndSort(filter, comparat or.reversed()).forEach(System.out::println);
+
         System.out.println("----------------------");
     }
 }
