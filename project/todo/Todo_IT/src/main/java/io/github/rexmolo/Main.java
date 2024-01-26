@@ -1,6 +1,8 @@
 package io.github.rexmolo;
 
 
+import io.github.rexmolo.data.dao.impl.PeopleDAOImpl;
+
 public class Main {
 
     private static int id;
@@ -8,7 +10,7 @@ public class Main {
 
         try {
 
-            String[] a = {"a"};
+//            String[] a = {"a"};
 
 //            Person jackie = new Person(null, null, null);
 //            Person jackie = new Person("", "Ma", null);
@@ -16,8 +18,10 @@ public class Main {
 //            Person jackie = new Person("jackie", null, "ttt@aa.com");
 //            Person jackie = new Person("jackie", "Ma", "dddddf");
 
-            System.out.println(a[1]);
+//            System.out.println(a[1]);
 
+            PeopleDAOImpl pdo = new PeopleDAOImpl();
+            pdo.findAll();
 
 
         } catch (IllegalArgumentException ilae) {

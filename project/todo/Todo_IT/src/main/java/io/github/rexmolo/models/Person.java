@@ -5,6 +5,8 @@ import io.github.rexmolo.utils.Verify;
 import java.util.Objects;
 
 public class Person {
+
+
     private int id;
     private String firstName;
     private String lastName;
@@ -14,16 +16,18 @@ public class Person {
 
 
     public Person(String firstName, String lastName, String email) {
-        this.id = generateId();
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.checkArguments();//try something
     }
 
-    public int generateId(){
-        return ++this.id;
+    public Person() {
     }
+
+//    public int generateId(){
+//        return ++this.id;
+//    }
 
 
     private void checkArguments(){
@@ -33,7 +37,11 @@ public class Person {
     }
 
     public int getId() {
-        return id;
+        return this.id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFirstName() {
