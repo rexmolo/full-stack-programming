@@ -62,16 +62,14 @@ public class PeopleDAOImpl implements PeopleDAO {
         Person p = new Person();
 
         try {
-            Function<PreparedStatement, PreparedStatement> setParameters = (PreparedStatement) -> {
+            ResultSet rs = DB.preparedQuery("SELECT * FROM person where person_id=?", (PreparedStatement) -> {
                 try {
                     PreparedStatement.setInt(1, id);
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
                 return PreparedStatement;
-            };
-
-            ResultSet rs = DB.preparedQuery("SELECT * FROM person where person_id=?", setParameters);
+            });
             while (rs.next()) {
                 p.setId(rs.getInt("person_id"));
                 p.setFirstName(rs.getString("first_name"));

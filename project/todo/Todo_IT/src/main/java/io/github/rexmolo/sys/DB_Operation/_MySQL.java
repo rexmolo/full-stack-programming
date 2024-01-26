@@ -41,7 +41,7 @@ public class _MySQL{
         }
         return null;
     }
-    
+
 
     public boolean create(String sql) {
        return this.execute(sql);
