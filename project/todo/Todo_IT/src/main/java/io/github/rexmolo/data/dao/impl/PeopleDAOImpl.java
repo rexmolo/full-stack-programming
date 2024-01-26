@@ -5,10 +5,13 @@ import io.github.rexmolo.models.AppUser;
 import io.github.rexmolo.models.Person;
 import io.github.rexmolo.sys.DB_Operation._MySQL;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.function.Function;
 
 public class PeopleDAOImpl implements PeopleDAO {
 
@@ -56,7 +59,29 @@ public class PeopleDAOImpl implements PeopleDAO {
 
     @Override
     public Person findById(int id) {
-        return null;
+        Person p = new Person();
+
+        try {
+            Function<PreparedStatement, PreparedStatement> setParameters = (PreparedStatement) -> {
+                try {
+                    PreparedStatement.setInt(1, id);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+                return PreparedStatement;
+            };
+
+            ResultSet rs = DB.preparedQuery("SELECT * FROM person where person_id=?", setParameters);
+            while (rs.next()) {
+                p.setId(rs.getInt("person_id"));
+                p.setFirstName(rs.getString("first_name"));
+                p.setLastName(rs.getString("last_name"));
+            }
+            return p;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return p;
     }
 
     @Override

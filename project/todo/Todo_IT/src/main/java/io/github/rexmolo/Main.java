@@ -21,7 +21,8 @@ public class Main {
 //            System.out.println(a[1]);
 
             PeopleDAOImpl pdo = new PeopleDAOImpl();
-            pdo.findAll();
+//            pdo.findById(1);
+            System.out.println(pdo.findById(2));
 
 
         } catch (IllegalArgumentException ilae) {

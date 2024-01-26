@@ -2,11 +2,10 @@ package io.github.rexmolo.sys.DB_Operation;
 
 import io.github.rexmolo.config.DB_MySQL;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.lang.reflect.Method;
+import java.sql.*;
 import java.util.Objects;
+import java.util.function.Function;
 
 public class _MySQL{
 
@@ -34,16 +33,15 @@ public class _MySQL{
         return null;
     }
 
-    public Statement getPreparedQuery(String sql) {
+    public ResultSet preparedQuery(String sql, Function<PreparedStatement, PreparedStatement> setParameters) {
         try {
-
-            return this.connection.
-                    prepareStatement(sql);
+            return setParameters.apply(this.connection.prepareStatement(sql)).executeQuery();
         } catch (SQLException sqle) {
             System.out.println(sqle.getMessage());
         }
         return null;
     }
+    
 
     public boolean create(String sql) {
        return this.execute(sql);
