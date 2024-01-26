@@ -41,6 +41,7 @@ public class PeopleDAOImpl implements PeopleDAO {
             ResultSet rs = DB.query("SELECT * FROM person");
             while (rs.next()) {
                 Person p = new Person();
+                p.setId(rs.getInt("person_id"));
                 p.setFirstName(rs.getString("first_name"));
                 p.setLastName(rs.getString("last_name"));
                 personLs.add(p);
