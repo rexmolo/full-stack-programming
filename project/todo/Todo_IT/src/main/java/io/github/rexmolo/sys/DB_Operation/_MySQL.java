@@ -4,14 +4,13 @@ import io.github.rexmolo.config.DB_MySQL;
 import io.github.rexmolo.exception.MySQLException;
 
 import java.sql.*;
-import java.util.HashMap;
 import java.util.Objects;
 import java.util.function.Function;
 
 public class _MySQL{
 
     private Connection connection;
-    private static _MySQL instance;
+    private static _MySQL instance = null;
 
 
     private _MySQL() {
@@ -34,41 +33,44 @@ public class _MySQL{
         return null;
     }
 
-    public ResultSet preparedQuery(String sql, Function<PreparedStatement, PreparedStatement> setParameters) {
-        try {
-            return setParameters.apply(this.connection.prepareStatement(sql)).executeQuery();
-        } catch (SQLException sqle) {
-            System.out.println(sqle.getMessage());
-        }
-        return null;
+    public PreparedStatement getPreparedStatement(String sql) throws SQLException {
+        return this.connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
     }
 
 
-    public boolean create(String sql) {
-       return this.execute(sql);
+    public ResultSet executePreparedQuery(PreparedStatement preparedStatement) throws SQLException {
+            return preparedStatement.executeQuery();
     }
 
-
-    public boolean update(String sql) {
-        return this.execute(sql);
+    public int create(PreparedStatement preparedStatement) throws SQLException {
+        int rowsAffected = preparedStatement.executeUpdate();
+        return this.getGeneratedKey(preparedStatement);
     }
 
-    public boolean delete(String sql) {
-        return this.execute(sql);
+    public ResultSet preparedQuery(String sql, Function<PreparedStatement, PreparedStatement> setParameters) throws SQLException {
+            return setParameters.apply(this.connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)).executeQuery();
     }
 
-    public boolean execute(String sql) {
-        try {
-            return this.connection.createStatement().execute(sql);
-        } catch (SQLException sqle) {
-            throw new MySQLException(sqle.getMessage());
-        } finally {
-            try{
-                this.connection.close();
-            } catch (SQLException sqle) {
-               throw new MySQLException(sqle.getMessage());
+    public int d(String sql, int reType) throws SQLException {
+        int re;
+        PreparedStatement preparedStatement = this.connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+        int rowsAffected = preparedStatement.executeUpdate();
+        this.connection.close();
+        re = switch (reType) {
+            case 1 -> rowsAffected;
+            case 2 -> this.getGeneratedKey(preparedStatement);
+            default -> -1;
+        };
+        return re;
+    }
+
+    private int getGeneratedKey(PreparedStatement preparedStatement) throws SQLException {
+        try(ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
+            if (generatedKeys.next()) {
+                return generatedKeys.getInt(1);
             }
         }
+        return -1;
     }
 
 }

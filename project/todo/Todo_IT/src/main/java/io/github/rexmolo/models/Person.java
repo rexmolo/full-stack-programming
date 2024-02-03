@@ -22,6 +22,12 @@ public class Person {
         this.checkArguments();//try something
     }
 
+    public Person(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+//        this.checkArguments();//try something
+    }
+
     public Person() {
     }
 

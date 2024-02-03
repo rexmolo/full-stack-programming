@@ -1,6 +1,9 @@
 package io.github.rexmolo.data.dao.impl;
 
+import io.github.rexmolo.config.DB_MySQL;
 import io.github.rexmolo.data.dao.PeopleDAO;
+import io.github.rexmolo.data.dao.SQL.PeopleSQL;
+import io.github.rexmolo.exception.MySQLException;
 import io.github.rexmolo.models.AppUser;
 import io.github.rexmolo.models.Person;
 import io.github.rexmolo.sys.DB_Operation._MySQL;
@@ -8,10 +11,9 @@ import io.github.rexmolo.sys.DB_Operation._MySQL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.function.Function;
+
 
 public class PeopleDAOImpl implements PeopleDAO {
 
@@ -33,7 +35,23 @@ public class PeopleDAOImpl implements PeopleDAO {
 
     @Override
     public Person create(Person person) {
-        return null;
+        try {
+            PreparedStatement preparedStatement = DB.getPreparedStatement(PeopleSQL.CREATE_PERSON);
+            preparedStatement.setString(1, person.getFirstName());
+            preparedStatement.setString(2, person.getLastName());
+            int personId = DB.create(preparedStatement);
+            if (personId == -1)
+                throw new MySQLException("create failed");
+            Person p = new Person();
+            p.setId(personId);
+            p.setFirstName(person.getFirstName());
+            p.setLastName(person.getLastName());
+
+            return p;
+        } catch (SQLException sqe) {
+            throw new MySQLException(sqe.getMessage());
+        }
+
     }
 
     @Override
@@ -52,9 +70,8 @@ public class PeopleDAOImpl implements PeopleDAO {
             personLs.forEach(System.out::println);
             return personLs;
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            throw new MySQLException(e.getMessage());
         }
-        return personLs;
     }
 
     @Override
@@ -66,7 +83,7 @@ public class PeopleDAOImpl implements PeopleDAO {
                 try {
                     PreparedStatement.setInt(1, id);
                 } catch (SQLException e) {
-                    throw new RuntimeException(e);
+                    throw new MySQLException(e.getMessage());
                 }
                 return PreparedStatement;
             });
@@ -77,9 +94,8 @@ public class PeopleDAOImpl implements PeopleDAO {
             }
             return p;
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            throw new MySQLException(e.getMessage());
         }
-        return p;
     }
 
     @Override

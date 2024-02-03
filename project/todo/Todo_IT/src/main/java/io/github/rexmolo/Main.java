@@ -2,6 +2,7 @@ package io.github.rexmolo;
 
 
 import io.github.rexmolo.data.dao.impl.PeopleDAOImpl;
+import io.github.rexmolo.models.Person;
 
 public class Main {
 
@@ -21,8 +22,10 @@ public class Main {
 //            System.out.println(a[1]);
 
             PeopleDAOImpl pdo = new PeopleDAOImpl();
+            Person p = pdo.create(new Person("AK", "Ma"));
 //            pdo.findById(1);
-            System.out.println(pdo.findById(2));
+//            System.out.println(pdo.findById(2));
+            System.out.println(p.toString());
 
 
         } catch (IllegalArgumentException ilae) {
