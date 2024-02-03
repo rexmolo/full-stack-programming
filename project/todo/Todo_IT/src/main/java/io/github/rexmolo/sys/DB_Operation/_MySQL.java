@@ -1,9 +1,10 @@
 package io.github.rexmolo.sys.DB_Operation;
 
 import io.github.rexmolo.config.DB_MySQL;
+import io.github.rexmolo.exception.MySQLException;
 
-import java.lang.reflect.Method;
 import java.sql.*;
+import java.util.HashMap;
 import java.util.Objects;
 import java.util.function.Function;
 
@@ -60,13 +61,12 @@ public class _MySQL{
         try {
             return this.connection.createStatement().execute(sql);
         } catch (SQLException sqle) {
-            System.out.println(sqle.getMessage());
-            return false;
+            throw new MySQLException(sqle.getMessage());
         } finally {
             try{
                 this.connection.close();
             } catch (SQLException sqle) {
-                System.out.println(sqle.getMessage());
+               throw new MySQLException(sqle.getMessage());
             }
         }
     }
