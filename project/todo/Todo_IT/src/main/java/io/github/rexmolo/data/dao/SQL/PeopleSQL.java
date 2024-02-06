@@ -7,7 +7,7 @@ public class PeopleSQL {
 
     public static String CREATE_PERSON = "INSERT INTO person (first_name, last_name) VALUES(?, ?)";
 
-    public static String getSQLFindOneByWhere(String where) {
+    public static String getSQLFindByWhere(String where) {
         return findOne + (" " + where + "=?");
     }
 

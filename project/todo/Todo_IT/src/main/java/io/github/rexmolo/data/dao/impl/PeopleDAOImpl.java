@@ -77,16 +77,11 @@ public class PeopleDAOImpl implements PeopleDAO {
     @Override
     public Person findById(int id) {
         Person p = new Person();
-
         try {
-            ResultSet rs = DB.preparedQuery("SELECT * FROM person where person_id=?", (PreparedStatement) -> {
-                try {
-                    PreparedStatement.setInt(1, id);
-                } catch (SQLException e) {
-                    throw new MySQLException(e.getMessage());
-                }
-                return PreparedStatement;
-            });
+            PreparedStatement preparedStatement = DB.getPreparedStatement(PeopleSQL.getSQLFindByWhere("id"));
+            preparedStatement.setInt(1, id);
+            ResultSet rs = DB.executePreparedQuery(preparedStatement);
+
             while (rs.next()) {
                 p.setId(rs.getInt("person_id"));
                 p.setFirstName(rs.getString("first_name"));

@@ -47,6 +47,19 @@ public class _MySQL{
         return this.getGeneratedKey(preparedStatement);
     }
 
+
+
+    private int getGeneratedKey(PreparedStatement preparedStatement) throws SQLException {
+        try(ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
+            if (generatedKeys.next()) {
+                return generatedKeys.getInt(1);
+            }
+        }
+        return -1;
+    }
+
+
+
     public ResultSet preparedQuery(String sql, Function<PreparedStatement, PreparedStatement> setParameters) throws SQLException {
             return setParameters.apply(this.connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)).executeQuery();
     }
@@ -64,13 +77,5 @@ public class _MySQL{
         return re;
     }
 
-    private int getGeneratedKey(PreparedStatement preparedStatement) throws SQLException {
-        try(ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
-            if (generatedKeys.next()) {
-                return generatedKeys.getInt(1);
-            }
-        }
-        return -1;
-    }
 
 }
