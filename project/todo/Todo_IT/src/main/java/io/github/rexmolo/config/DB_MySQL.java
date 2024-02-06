@@ -14,6 +14,8 @@ public final class DB_MySQL {
 
     private static Connection connection = null;
 
+    private DB_MySQL() {}
+
     public static Connection getConnection() {
         try {
 
