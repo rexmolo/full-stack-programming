@@ -1,6 +1,7 @@
 package io.github.rexmolo.data.dao.impl;
 
 import io.github.rexmolo.models.Person;
+import io.github.rexmolo.sys.DB_Operation._MySQL;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -18,8 +19,7 @@ class PeopleDAOImplTest {
 
     @BeforeEach
     void setUp() {
-        pdo = new PeopleDAOImpl();
-
+        pdo = new PeopleDAOImpl(_MySQL.getInstance());
     }
 
     @Test
