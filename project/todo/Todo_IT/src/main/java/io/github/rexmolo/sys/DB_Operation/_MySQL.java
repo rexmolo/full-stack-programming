@@ -42,6 +42,10 @@ public class _MySQL{
             return preparedStatement.executeQuery();
     }
 
+    public int update(PreparedStatement preparedStatement) throws SQLException {
+        return preparedStatement.executeUpdate(); //rows affected
+    }
+
     public int create(PreparedStatement preparedStatement) throws SQLException {
         int rowsAffected = preparedStatement.executeUpdate();
         return this.getGeneratedKey(preparedStatement);
@@ -60,22 +64,22 @@ public class _MySQL{
 
 
 
-    public ResultSet preparedQuery(String sql, Function<PreparedStatement, PreparedStatement> setParameters) throws SQLException {
-            return setParameters.apply(this.connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)).executeQuery();
-    }
-
-    public int d(String sql, int reType) throws SQLException {
-        int re;
-        PreparedStatement preparedStatement = this.connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-        int rowsAffected = preparedStatement.executeUpdate();
-        this.connection.close();
-        re = switch (reType) {
-            case 1 -> rowsAffected;
-            case 2 -> this.getGeneratedKey(preparedStatement);
-            default -> -1;
-        };
-        return re;
-    }
+//    public ResultSet preparedQuery(String sql, Function<PreparedStatement, PreparedStatement> setParameters) throws SQLException {
+//            return setParameters.apply(this.connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)).executeQuery();
+//    }
+//
+//    public int d(String sql, int reType) throws SQLException {
+//        int re;
+//        PreparedStatement preparedStatement = this.connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+//        int rowsAffected = preparedStatement.executeUpdate();
+//        this.connection.close();
+//        re = switch (reType) {
+//            case 1 -> rowsAffected;
+//            case 2 -> this.getGeneratedKey(preparedStatement);
+//            default -> -1;
+//        };
+//        return re;
+//    }
 
 
 }

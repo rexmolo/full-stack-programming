@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Objects;
 
 
 public class PeopleDAOImpl implements PeopleDAO {
@@ -40,8 +41,9 @@ public class PeopleDAOImpl implements PeopleDAO {
             preparedStatement.setString(1, person.getFirstName());
             preparedStatement.setString(2, person.getLastName());
             int personId = DB.create(preparedStatement);
-            if (personId == -1)
-                throw new MySQLException("create failed");
+
+            if (personId == -1)  throw new MySQLException("create failed");
+
             Person p = new Person();
             p.setId(personId);
             p.setFirstName(person.getFirstName());
@@ -60,15 +62,7 @@ public class PeopleDAOImpl implements PeopleDAO {
 
         try {
             ResultSet rs = DB.query("SELECT * FROM person");
-            while (rs.next()) {
-                Person p = new Person();
-                p.setId(rs.getInt("person_id"));
-                p.setFirstName(rs.getString("first_name"));
-                p.setLastName(rs.getString("last_name"));
-                personLs.add(p);
-            }
-            personLs.forEach(System.out::println);
-            return personLs;
+            return getPeople(personLs, rs);
         } catch (SQLException e) {
             throw new MySQLException(e.getMessage());
         }
@@ -78,7 +72,7 @@ public class PeopleDAOImpl implements PeopleDAO {
     public Person findById(int id) {
         Person p = new Person();
         try {
-            PreparedStatement preparedStatement = DB.getPreparedStatement(PeopleSQL.getSQLFindByWhere("id"));
+            PreparedStatement preparedStatement = DB.getPreparedStatement(PeopleSQL.getFindSQL("id"));
             preparedStatement.setInt(1, id);
             ResultSet rs = DB.executePreparedQuery(preparedStatement);
 
@@ -95,12 +89,56 @@ public class PeopleDAOImpl implements PeopleDAO {
 
     @Override
     public Collection<Person> findByName(String name) {
-        return null;
+        ArrayList<Person> personLs = new ArrayList<>();
+
+        try {
+            PreparedStatement preparedStatement = DB.getPreparedStatement(PeopleSQL.getFindSQL("name"));
+            preparedStatement.setString(1, name);
+            ResultSet rs = DB.executePreparedQuery(preparedStatement);
+
+            return getPeople(personLs, rs);
+        } catch (SQLException e) {
+            throw new MySQLException(e.getMessage());
+        }
+    }
+
+    private Collection<Person> getPeople(ArrayList<Person> personLs, ResultSet rs) throws SQLException {
+        while (rs.next()) {
+            Person p = new Person();
+            p.setId(rs.getInt("person_id"));
+            p.setFirstName(rs.getString("first_name"));
+            p.setLastName(rs.getString("last_name"));
+            personLs.add(p);
+        }
+        personLs.forEach(System.out::println);
+        return personLs;
     }
 
     @Override
     public Person update(Person person) {
-        return null;
+
+        if (Objects.isNull(person)) throw new IllegalArgumentException("empty data not allowed");
+
+        Person foundPerson = this.findById(person.getId());
+        if (Objects.isNull(foundPerson)) throw new IllegalArgumentException("could not find this person");
+
+        if (person.equals(foundPerson)) return person;
+
+        try {
+            PreparedStatement preparedStatement = DB.getPreparedStatement(PeopleSQL.getUpdateSQL("id"));
+
+            preparedStatement.setString(1, person.getFirstName());
+            preparedStatement.setString(2, person.getLastName());
+            preparedStatement.setInt(3, person.getId());
+            int rowsAffected = DB.update(preparedStatement);
+
+            if (rowsAffected == 0) throw new MySQLException("update failed");
+
+            return person;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
