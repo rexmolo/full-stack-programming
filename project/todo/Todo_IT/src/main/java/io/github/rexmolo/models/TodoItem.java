@@ -15,8 +15,13 @@ public class TodoItem {
     private Person creator;
 
 
+
+//    public TodoItem() {
+//        this.id = this.generateId();
+//    }
+
+
     public TodoItem() {
-        this.id = this.generateId();
     }
 
     public TodoItem(String title, String taskDescription, LocalDate deadline, Person creator) {
@@ -33,11 +38,17 @@ public class TodoItem {
         this.done = done;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
     public boolean isOverdue() {
         LocalDate today = LocalDate.now();
-        if (today.isAfter(this.deadline))
-            return true;
-        return false;
+        return today.isAfter(this.deadline);
     }
 
     private void checkArguments(){
@@ -46,9 +57,9 @@ public class TodoItem {
         Verify.arguments(fieldName, fieldValue);
     }
 
-    public int generateId(){
-        return ++this.id;
-    }
+//    public int generateId(){
+//        return ++this.id;
+//    }
 
     public String getTitle() {
         return title;
@@ -93,17 +104,6 @@ public class TodoItem {
         this.creator = creator;
     }
 
-
-    public String getSummary() {
-        return "TodoItem{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", taskDescription='" + taskDescription + '\'' +
-                ", deadline=" + deadline +
-                ", done=" + (done ? "finished" : "unfinished") +
-                ", creator=" + creator +
-                '}';
-    }
 
     @Override
     public boolean equals(Object o) {

@@ -1,13 +1,12 @@
 package io.github.rexmolo.data.dao;
 
-import io.github.rexmolo.models.AppUser;
 
 import java.util.Collection;
 
 public interface BaseDAO<T> {
 
 
-    AppUser persist(T t);
+    T persist(T t);
 
     Collection<T> findAll();
 

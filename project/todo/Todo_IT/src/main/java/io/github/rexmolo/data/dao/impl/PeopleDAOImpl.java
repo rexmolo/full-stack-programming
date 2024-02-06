@@ -18,8 +18,8 @@ public class PeopleDAOImpl implements PeopleDAO {
 
     private static _MySQL DB;
 
-    public PeopleDAOImpl() {
-        DB = _MySQL.getInstance();
+    public PeopleDAOImpl(_MySQL db) {
+        DB = db;
     }
 
     @Override
@@ -135,7 +135,7 @@ public class PeopleDAOImpl implements PeopleDAO {
             return person;
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new MySQLException(e.getMessage());
         }
     }
 
