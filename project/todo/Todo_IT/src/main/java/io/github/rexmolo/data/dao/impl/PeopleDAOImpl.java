@@ -1,6 +1,5 @@
 package io.github.rexmolo.data.dao.impl;
 
-import io.github.rexmolo.config.DB_MySQL;
 import io.github.rexmolo.data.dao.PeopleDAO;
 import io.github.rexmolo.data.dao.SQL.PeopleSQL;
 import io.github.rexmolo.exception.MySQLException;
