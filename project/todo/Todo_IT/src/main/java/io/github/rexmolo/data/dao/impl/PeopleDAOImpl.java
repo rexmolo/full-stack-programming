@@ -3,7 +3,6 @@ package io.github.rexmolo.data.dao.impl;
 import io.github.rexmolo.data.dao.PeopleDAO;
 import io.github.rexmolo.data.dao.SQL.PeopleSQL;
 import io.github.rexmolo.exception.MySQLException;
-import io.github.rexmolo.models.AppUser;
 import io.github.rexmolo.models.Person;
 import io.github.rexmolo.sys.DB_Operation._MySQL;
 
@@ -24,7 +23,7 @@ public class PeopleDAOImpl implements PeopleDAO {
     }
 
     @Override
-    public AppUser persist(Person person) {
+    public Person persist(Person person) {
         return null;
     }
 
