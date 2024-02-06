@@ -71,7 +71,7 @@ public class PeopleDAOImpl implements PeopleDAO {
     public Person findById(int id) {
         Person p = new Person();
         try {
-            PreparedStatement preparedStatement = DB.getPreparedStatement(PeopleSQL.getFindSQL("id"));
+            PreparedStatement preparedStatement = DB.getPreparedStatement(PeopleSQL.getFindSQL("person_id"));
             preparedStatement.setInt(1, id);
             ResultSet rs = DB.executePreparedQuery(preparedStatement);
 
@@ -91,8 +91,8 @@ public class PeopleDAOImpl implements PeopleDAO {
         ArrayList<Person> personLs = new ArrayList<>();
 
         try {
-            PreparedStatement preparedStatement = DB.getPreparedStatement(PeopleSQL.getFindSQL("name"));
-            preparedStatement.setString(1, name);
+            PreparedStatement preparedStatement = DB.getPreparedStatement(PeopleSQL.FINDBYFIRSTNAME);
+            preparedStatement.setString(1, "%"+name+"%");
             ResultSet rs = DB.executePreparedQuery(preparedStatement);
 
             return getPeople(personLs, rs);
@@ -109,7 +109,7 @@ public class PeopleDAOImpl implements PeopleDAO {
             p.setLastName(rs.getString("last_name"));
             personLs.add(p);
         }
-        personLs.forEach(System.out::println);
+//        personLs.forEach(System.out::println);
         return personLs;
     }
 
@@ -124,7 +124,7 @@ public class PeopleDAOImpl implements PeopleDAO {
         if (person.equals(foundPerson)) return person;
 
         try {
-            PreparedStatement preparedStatement = DB.getPreparedStatement(PeopleSQL.getUpdateSQL("id"));
+            PreparedStatement preparedStatement = DB.getPreparedStatement(PeopleSQL.getUpdateSQL("person_id"));
 
             preparedStatement.setString(1, person.getFirstName());
             preparedStatement.setString(2, person.getLastName());
@@ -149,7 +149,7 @@ public class PeopleDAOImpl implements PeopleDAO {
         if (Objects.isNull(foundPerson)) throw new IllegalArgumentException("could not find this person");
 
         try {
-            PreparedStatement preparedStatement = DB.getPreparedStatement(PeopleSQL.getDeleteSQL("id"));
+            PreparedStatement preparedStatement = DB.getPreparedStatement(PeopleSQL.getDeleteSQL("person_id"));
 
             preparedStatement.setInt(1, id);
             int rowsAffected = DB.delete(preparedStatement);
