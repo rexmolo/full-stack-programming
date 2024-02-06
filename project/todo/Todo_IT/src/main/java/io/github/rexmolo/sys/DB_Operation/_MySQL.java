@@ -46,6 +46,10 @@ public class _MySQL{
         return preparedStatement.executeUpdate(); //rows affected
     }
 
+    public int delete(PreparedStatement preparedStatement) throws SQLException {
+        return preparedStatement.executeUpdate(); //rows affected
+    }
+
     public int create(PreparedStatement preparedStatement) throws SQLException {
         int rowsAffected = preparedStatement.executeUpdate();
         return this.getGeneratedKey(preparedStatement);

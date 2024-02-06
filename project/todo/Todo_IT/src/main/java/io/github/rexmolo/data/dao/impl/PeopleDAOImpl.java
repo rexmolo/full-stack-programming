@@ -144,7 +144,20 @@ public class PeopleDAOImpl implements PeopleDAO {
     @Override
     public boolean deleteById(int id) {
 
+        if (id < 0) throw new IllegalArgumentException("data not allowed");
 
-        return false;
+        Person foundPerson = this.findById(id);
+        if (Objects.isNull(foundPerson)) throw new IllegalArgumentException("could not find this person");
+
+        try {
+            PreparedStatement preparedStatement = DB.getPreparedStatement(PeopleSQL.getDeleteSQL("id"));
+
+            preparedStatement.setInt(1, id);
+            int rowsAffected = DB.delete(preparedStatement);
+            return rowsAffected != 0;
+        } catch (SQLException e) {
+            throw new MySQLException(e.getMessage());
+        }
+
     }
 }
