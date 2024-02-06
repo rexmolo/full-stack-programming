@@ -117,6 +117,11 @@ public class PeopleDAOImpl implements PeopleDAO {
 
         if (Objects.isNull(person)) throw new IllegalArgumentException("empty data not allowed");
 
+//        Optional<Person> optPerson = Optional.of(findById(person.getId()));
+//
+//        Person updatePerson = optPerson.orElseThrow(() ->
+//                new IllegalArgumentException("No person with id '" + person.getId() + "' were found in database."));
+//
         Person foundPerson = this.findById(person.getId());
         if (Objects.isNull(foundPerson)) throw new IllegalArgumentException("could not find this person");
 

@@ -120,6 +120,7 @@ public class TodoItemDAOImpl implements TodoItemsDAO {
     public TodoItem update(TodoItem todoItem) {
         if (Objects.isNull(todoItem)) throw new IllegalArgumentException("empty data not allowed");
 
+
         TodoItem foundTodo = this.findById(todoItem.getId());
         if (Objects.isNull(foundTodo)) throw new IllegalArgumentException("could not find this todo item");
 
