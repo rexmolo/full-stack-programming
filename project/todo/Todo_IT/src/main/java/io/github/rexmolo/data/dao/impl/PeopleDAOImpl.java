@@ -59,7 +59,7 @@ public class PeopleDAOImpl implements PeopleDAO {
         ArrayList<Person> personLs = new ArrayList<>();
 
         try {
-            ResultSet rs = DB.query("SELECT * FROM person");
+            ResultSet rs = DB.query(PeopleSQL.FIND);
             return getPeople(personLs, rs);
         } catch (SQLException e) {
             throw new MySQLException(e.getMessage());
