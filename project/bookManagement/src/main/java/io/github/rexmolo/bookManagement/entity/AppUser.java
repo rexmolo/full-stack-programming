@@ -4,6 +4,7 @@ package io.github.rexmolo.bookManagement.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDate;
 
@@ -27,6 +28,7 @@ public class AppUser {
 
 
 
+    @Setter
     @OneToOne
     @JoinColumn(name = "details_id")
     private Details details;
@@ -35,7 +37,7 @@ public class AppUser {
         this.username = username;
         this.password = password;
         this.regdate = LocalDate.now();
-        this.details = new Details();
+
     }
 
 }

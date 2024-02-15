@@ -30,4 +30,16 @@ public class Details {
 
     @Setter
     private LocalDate birthDate;
+
+
+    public Details(String email, String name) {
+        this.email = email;
+        this.name = name;
+    }
+
+    public Details(String email, String name, LocalDate birthDate) {
+        this.email = email;
+        this.name = name;
+        this.birthDate = birthDate;
+    }
 }

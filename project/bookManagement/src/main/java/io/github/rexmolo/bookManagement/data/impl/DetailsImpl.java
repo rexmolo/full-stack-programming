@@ -4,6 +4,7 @@ import io.github.rexmolo.bookManagement.data.DetailsDao;
 import io.github.rexmolo.bookManagement.entity.Details;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
@@ -25,6 +26,7 @@ public class DetailsImpl implements DetailsDao {
     }
 
     @Override
+    @Transactional
     public Details create(Details details) {
         entityManager.persist(details);
         return details;
