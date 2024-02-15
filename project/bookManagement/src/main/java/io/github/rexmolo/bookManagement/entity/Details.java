@@ -21,11 +21,11 @@ public class Details {
     private int detailsId;
 
     @Setter
-    @Column(nullable = false, length = 80, unique = true)
+    @Column(length = 80, unique = true)
     private String email;
 
     @Setter
-    @Column(nullable = false, length = 100)
+    @Column(length = 100)
     private String name;
 
     @Setter

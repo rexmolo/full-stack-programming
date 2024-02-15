@@ -37,10 +37,8 @@ public class AppUserImpl implements AppUserDao {
 
     @Override
     public AppUser update(AppUser appUser) {
-//        entityManager.merge(appUser);
-//        return findByID(appUser.getAppUserId()).or;
-
-        return null;
+        entityManager.merge(appUser);
+        return findByID(appUser.getAppUserId()).get();
     }
 
     @Override

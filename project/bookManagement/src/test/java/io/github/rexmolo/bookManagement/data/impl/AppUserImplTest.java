@@ -6,7 +6,6 @@ import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.Rollback;
 
 import java.util.Collection;
 
@@ -15,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Transactional
-@Rollback
+//@Rollback
 class AppUserImplTest {
 
     @Autowired
@@ -23,10 +22,14 @@ class AppUserImplTest {
 
     @Test
     void create() {
-        appUserDao.create(new AppUser("jackie", "fdkjfdkjflas"));
+        AppUser appUser = appUserDao.create(new AppUser("jackie", "fdkjfdkjflas"));
+        assertNotNull(appUser);
+
     }
 
+
     @Test
+
     void findAll() {
         Collection<AppUser> appUsers = appUserDao.findAll();
         appUsers.forEach(System.out::println);

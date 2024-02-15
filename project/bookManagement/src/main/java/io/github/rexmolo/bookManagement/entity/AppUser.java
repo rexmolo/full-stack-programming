@@ -34,6 +34,8 @@ public class AppUser {
     public AppUser(String username, String password) {
         this.username = username;
         this.password = password;
+        this.regdate = LocalDate.now();
+        this.details = new Details();
     }
 
 }

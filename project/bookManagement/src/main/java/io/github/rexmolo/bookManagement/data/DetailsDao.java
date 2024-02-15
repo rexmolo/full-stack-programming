@@ -8,7 +8,8 @@ public interface DetailsDao {
 
     Details findById(int id);
     Collection<Details> findAll();
-    Details create();
-    Details update();
-    void delete();
+    Details create(Details details);
+    Details update(Details details);
+    void delete(Details details);
+
 }
