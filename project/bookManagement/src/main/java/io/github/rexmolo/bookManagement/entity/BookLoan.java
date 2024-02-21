@@ -3,6 +3,7 @@ package io.github.rexmolo.bookManagement.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
 
 import java.time.LocalDate;
 
@@ -15,6 +16,7 @@ public class BookLoan {
     private int loanId;
 
     @Setter
+    @CreatedDate
     private LocalDate loanDate;
     @Setter
     private LocalDate dueDate;
@@ -32,7 +34,6 @@ public class BookLoan {
     private Book book;
 
     public BookLoan() {
-        this.loanDate = LocalDate.now();
         this.dueDate  = LocalDate.now().plusDays(7);
         this.returned = false;
     }
