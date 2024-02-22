@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Set;
+
 @Getter
 @NoArgsConstructor
 @Entity
@@ -28,9 +30,24 @@ public class Book {
     @Column
     private int maxLoanDays = 7;
 
+    @Setter
+    @ManyToMany(mappedBy = "writtenBooks")
+    private Set<Author> authors;
+
 
     public Book(String isbn, String title) {
         this.isbn = isbn;
         this.title = title;
+    }
+
+
+    public void addAuthor(Author author) {
+        authors.add(author);
+        author.getWrittenBooks().add(this);
+    }
+
+    public void removeAuthor(Author author) {
+        author.getWrittenBooks().remove(this);
+        authors.remove(author);
     }
 }
