@@ -31,7 +31,7 @@ public class Book {
     private int maxLoanDays = 7;
 
     @Setter
-    @ManyToMany(mappedBy = "writtenBooks")
+    @ManyToMany(mappedBy = "writtenBooks", fetch = FetchType.LAZY)
     private Set<Author> authors;
 
 

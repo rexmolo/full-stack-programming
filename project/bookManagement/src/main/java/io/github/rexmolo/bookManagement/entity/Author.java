@@ -22,7 +22,7 @@ public class Author {
     @Setter
     private String lastName;
     @Setter
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "author_books_rel",
             joinColumns = @JoinColumn(name = "author_id"),
             inverseJoinColumns = @JoinColumn(name = "book_id"))
@@ -32,7 +32,7 @@ public class Author {
         writtenBooks.add(book);
         book.getAuthors().add(this);
     }
-    
+
     public void removeWrittenBooks(Book book) {
         book.getAuthors().remove(this);
         writtenBooks.remove(book);
