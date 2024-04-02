@@ -8,13 +8,12 @@ export let marketplace = {
     init() {
         this.advertisements = ad_data;
         this.display(this.advertisements);
-        this.eventsBinding();
     },
 
     display(ads) {
         let adList = '';
         ads.forEach(element => {
-            let ad = `
+            let adCard = `
             <div class="card mb-4 col-md-4">
             <img class="card-img-top" src="${element.image}" alt="${element.title}">
             <div class="card-body">
@@ -27,17 +26,15 @@ export let marketplace = {
             </div>
           </div>
           `
-          adList += ad;
+          adList += adCard;
         });
         let advertisementsNode = document.getElementById("advertisements");
         advertisementsNode.innerHTML = adList;
+        this.eventsBinding();
     },
 
     filtering() {
        if(this.filterCondation.title == undefined || this.filterCondation.title.length == 0){
-        console.log(`title is + ${this.filterCondation.title}`);
-        console.log(`ad l+ ${this.advertisements.length}`)
-        if(this.advertisements.length == 6) return;
         this.display();
        }
        console.log(this.filterCondation.title);
